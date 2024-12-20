@@ -1,3 +1,8 @@
+<?php session_start(); ?>
+
+<?php require_once("./storage/db.php") ?>
+<?php require_once("./storage/register_crud.php") ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,14 +53,45 @@
         <!-- <img src="assets/img/logo.png" alt=""> -->
 
       </a>
-      <?php
-      if (isset($_POST['username'])) {
-
-      }
-      ?>
-    </div>
+      </div>
   </header>
 
+      <?php
+      
+        //  ADMIN Loign Page (Test)
+
+        // $admin = get_admin($mysqli);
+        // $admin = $admin->fetch_all();
+        // $admin_user = array_filter($admin,function($admin){
+        //   return $admin[4] == 1;
+        // });
+        // if(!$admin_user){
+        //     admin($mysqli,"admin","admin@gmail.com","password");
+        // }
+
+        
+        
+          if(isset($_POST['login'])){
+            $email = trim($_POST['email']);
+            $password = trim($_POST['password']);
+  
+            $user_result = login($mysqli,$email,$password);
+            $user_count = mysqli_num_rows($user_result);
+  
+            if($user_count === 1){
+              $user_array = mysqli_fetch_assoc($user_result);
+              $_SESSION['user_array'] = "$user_array";
+              header('location: register_list.php');
+            }else{
+              echo "Invalid email or password";
+            }
+          }
+        
+
+        
+        
+      ?>
+    
   <body>
     <section class="vh-100">
       <div class="container-fluid">
@@ -69,17 +105,19 @@
 
                 <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in to <span
                     class="sitename">Flora</span></h3>
-
+                  
                 <div data-mdb-input-init class="form-outline mb-4 form-floating">
-                  <input type="email" id="email" class="form-control " />
+                  <input type="email" name="email" class="form-control " />
                   <label class="form-label" for="form2Example18">Email address</label>
+                  <div class="text-danger" style="font-size:12px;"></div>
                 </div>
-
                 <div>
                 <div data-mdb-input-init class="form-outline mb-2 form-floating">
-                  <input type="password" id="form2Example28" class="form-control " />
-                  <label class="form-label" for="form2Example28">Password</label>
+                  <input type="password" name="password" class="form-control " />
+                  <label class="form-label" for="password">Password</label>
+                  <div class="text-danger" style="font-size:12px;"></div>
                 </div>
+                
                 <div class="form-check">
                   <input type="checkbox" id="show" class="form-check-input">
                   <label class="form-check-label " style="font-size:13px;" for="show">
@@ -88,9 +126,9 @@
                 </div>
                 </div>
                 <div class="pt-1 mt-5 mb-4">
-                  <a href="" class="btn "
+                  <button class="btn " name = "login"
                     style="background-color: var(--accent-color);color: var(--contrast-color);border-radius: 30px;padding: 8px 30px;border: 2px solid transparent;transition: 0.3s all ease-in-out;font-size: 14px;">Log
-                    in</a>
+                    in</button>
                 </div>
                 <p>Don't have an account? <a href="#!" style="color:var(--accent-color)">Register Here</a></p>
 
