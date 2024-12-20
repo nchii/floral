@@ -9,3 +9,10 @@ function get_all_plants($mysqli){
   $sql="SELECT * FROM `plant`";
   return $mysqli->query($sql); 
 }
+
+function get_plant_details($mysqli,$id){
+  $sql="SELECT * FROM `plant` WHERE `id`=$id";
+  $plant = $mysqli->query($sql);
+  return $plant->fetch_assoc(); 
+}
+
