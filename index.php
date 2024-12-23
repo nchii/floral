@@ -1,6 +1,15 @@
 <?php require_once('layout/header.php') ?>
-<?php require_once("./storage/register_crud.php") ?>
+<?php require_once("storage/register_crud.php") ?>
+<?php require_once("storage/usercrud.php") ?>
 
+<?php 
+
+if(have_admin($mysqli)){
+  $admin_password= password_hash("adminoffloral",PASSWORD_BCRYPT);
+  save_user($mysqli, "admin", "admin@gmail.com", $admin_password, 1, "assets/img/admin.png");
+
+}
+?>
   
 <nav id="navmenu" class="navmenu">
         <ul>
@@ -61,13 +70,16 @@
               </script>
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <img src="assets/img/img_h_6.jpg" alt="Image" class="img-fluid">
+                  <img src="assets/img/home1.png" alt="Image" class="img-fluid">
                 </div>
                 <div class="swiper-slide">
-                  <img src="assets/img/img_h_7.jpg" alt="Image" class="img-fluid">
+                  <img src="assets/img/home4.png" alt="Image" class="img-fluid">
                 </div>
                 <div class="swiper-slide">
-                  <img src="assets/img/img_h_8.jpg" alt="Image" class="img-fluid">
+                  <img src="assets/img/home3.png" alt="Image" class="img-fluid">
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/img/home2.png" alt="Image" class="img-fluid">
                 </div>
               </div>
               <div class="swiper-pagination"></div>
@@ -82,10 +94,11 @@
               Far far away, behind the word mountains, far from the countries
               Vokalia and Consonantia, there live the blind texts. Separated they
               live in Bookmarksgrove right at the coast of the Semantics, a large
-              language ocean.
+              language oc
             </p>
-            <p class="mt-5" data-aos="fade-up">
-              <a href="#" class="btn btn-get-started">Get Started</a>
+            <p class="mt-5 d-flex justify-content-between " data-aos="fade-up">
+              <a href="plants.php" class="btn btn-get-started">Buy Plants</a>
+              <a href="bouquets.php" class="btn btn-get-started">Buy Bouquets</a>
             </p>
           </div>
         </div>

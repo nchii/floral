@@ -2,6 +2,44 @@
 
 <?php require_once("./storage/db.php") ?>
 <?php require_once("./storage/register_crud.php") ?>
+<?php require_once("./storage/usercrud.php")?>
+
+
+<?php
+
+
+$email = $email_err = $password = $password_err = "";
+
+if (isset($_POST['email'])) {
+    $email = $mysqli->real_escape_string($_POST['email']) ;
+    $password = $mysqli->real_escape_string($_POST['password']);
+    if ($email === "") {
+        $email_err = "Email cann't be blank!";
+    }
+    if ($password === "") {
+        $password_err = "Password cann't be blank!";
+    }
+    if ($email_err === "" && $password_err === "") {
+        $user = get_user_with_email($mysqli, $email);
+        if (!$user) {
+            $email_err = "User does not exist!";
+        } else {
+            // if ($password !== $user['password']) {
+            //     $password_err = "Password does not match!";
+            // } else {
+            //     header("Location:./home.php");
+            // }
+            if (password_verify($password, $user['password'])) {
+                setcookie("user", json_encode($user), time() + 1000 * 60 * 60 * 24 * 14, "/");
+                header("Location:./index.php");
+            } else {
+                $password_err = "Password does not match!";
+            }
+        }
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,24 +109,6 @@
 
         
         
-          if(isset($_POST['login'])){
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
-  
-            $user_result = login($mysqli,$email,$password);
-            $user_count = mysqli_num_rows($user_result);
-  
-            if($user_count === 1){
-              $user_array = mysqli_fetch_assoc($user_result);
-              $_SESSION['user_array'] = "$user_array";
-              header('location: register_list.php');
-            }else{
-              echo "Invalid email or password";
-            }
-          }
-        
-
-        
         
       ?>
     
@@ -107,16 +127,21 @@
                     class="sitename">Flora</span></h3>
                   
                 <div data-mdb-input-init class="form-outline mb-4 form-floating">
-                  <input type="email" name="email" class="form-control " />
+                  <input type="email" name="email" class="form-control " value="<?= $email ?>"/>
                   <label class="form-label" for="form2Example18">Email address</label>
-                  <div class="text-danger" style="font-size:12px;"></div>
+                  <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
+                  <?= $email_err ?>
+                  </div>
                 </div>
+
                 <div>
                 <div data-mdb-input-init class="form-outline mb-2 form-floating">
-                  <input type="password" name="password" class="form-control " />
+                  <input type="password" name="password" class="form-control " value="<?= $password?>" />
                   <label class="form-label" for="password">Password</label>
-                  <div class="text-danger" style="font-size:12px;"></div>
+                  <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
+                  <?= $password_err ?>
                 </div>
+                  
                 
                 <div class="form-check">
                   <input type="checkbox" id="show" class="form-check-input">
