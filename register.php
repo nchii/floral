@@ -85,7 +85,7 @@
           if(empty($phone)){
             $phone_err = "Phone number is required";
           }else{
-            if(!preg_match('/^[0-9][1-9]*$/',$phone)){
+            if(!preg_match('/^[0-9][0-9]*$/',$phone)){
               $phone_err = "Does not match with phone number format ";
             }
           }
@@ -104,11 +104,7 @@
             $encrptPassword = password_hash($password,PASSWORD_BCRYPT);
             $query = "INSERT INTO `user`(`name`,`email`,`phone`,`address`,`password`) VALUE ('$name','$email','$phone','$address','$encrptPassword')";
             $result = mysqli_query($mysqli,$query);
-            if($result == true){
-              echo "<script> alert('Registration Successfull');</script>";
-            }else{
-              die('Error: '.mysqli_error($sql));
-            }
+            
         }     
       }
               

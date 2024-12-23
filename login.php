@@ -83,16 +83,6 @@ if (isset($_POST['email'])) {
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-
-      </a>
-      </div>
-  </header>
 
       <?php
       
@@ -112,7 +102,6 @@ if (isset($_POST['email'])) {
         
       ?>
     
-  <body>
     <section class="vh-100">
       <div class="container-fluid">
         <div class="row">
@@ -170,3 +159,5 @@ if (isset($_POST['email'])) {
       </div>
     </section>
   </body>
+  </body>
+  </html>
