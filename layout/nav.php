@@ -1,6 +1,6 @@
 <nav id="navmenu" class="navmenu">
   <ul>
-    <li><a href="index.php" class="active">Home</a></li>
+    <li><a href="index.php">Home</a></li>
     <li><a href="plants.php">Plants</a></li>
     <li><a href="bouquets.php">Bouquets</a></li>
     <li><a href="contacts.php">Contact</a></li>
