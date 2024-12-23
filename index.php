@@ -27,7 +27,7 @@ if(have_admin($mysqli)){
           <li><a href="contact.html">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+</nav>
 
 
       
