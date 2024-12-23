@@ -121,6 +121,14 @@
 
 <!-- Main JS File -->
 <script src="assets/js/main.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script>
+  $("#navmenu a").toArray().forEach(element => {
+    if(element.href == location.href){
+      element.class = "active";
+    }
+});
+</script>
 
 </body>
 
