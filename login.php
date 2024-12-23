@@ -111,18 +111,12 @@ if (isset($_POST['email'])) {
         
         
       ?>
-    
-  <body>
-    <section class="vh-100">
+<section class="vh-100">
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6 ">
-
-
             <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-
               <form style="width: 23rem;" method="post">
-
                 <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in to <span
                     class="sitename">Flora</span></h3>
                   
@@ -130,26 +124,25 @@ if (isset($_POST['email'])) {
                   <input type="email" name="email" class="form-control " value="<?= $email ?>"/>
                   <label class="form-label" for="form2Example18">Email address</label>
                   <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
-                  <?= $email_err ?>
+                    <?= $email_err ?>
                   </div>
                 </div>
 
-                <div>
                 <div data-mdb-input-init class="form-outline mb-2 form-floating">
-                  <input type="password" name="password" class="form-control " value="<?= $password?>" />
-                  <label class="form-label" for="password">Password</label>
-                  <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
-                  <?= $password_err ?>
+                    <input type="password" name="password" class="form-control " value="<?= $password?>" />
+                    <label class="form-label" for="password">Password</label>
+                    <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
+                      <?= $password_err ?>
+                    </div>
                 </div>
                   
                 
-                <div class="form-check">
-                  <input type="checkbox" id="show" class="form-check-input">
-                  <label class="form-check-label " style="font-size:13px;" for="show">
-                    Show Password
-                  </label>
-                </div>
-                </div>
+                  <div class="form-check">
+                    <input type="checkbox" id="show" class="form-check-input">
+                    <label class="form-check-label " style="font-size:13px;" for="show">
+                      Show Password
+                    </label>
+                  </div>
                 <div class="pt-1 mt-5 mb-4">
                   <button class="btn " name = "login"
                     style="background-color: var(--accent-color);color: var(--contrast-color);border-radius: 30px;padding: 8px 30px;border: 2px solid transparent;transition: 0.3s all ease-in-out;font-size: 14px;">Log
@@ -169,4 +162,9 @@ if (isset($_POST['email'])) {
         </div>
       </div>
     </section>
+  
   </body>
+  </html>
+
+
+  
