@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 
 <?php require_once("./storage/db.php") ?>
 <?php require_once("./storage/register_crud.php") ?>
@@ -31,7 +31,7 @@ if (isset($_POST['email'])) {
             // }
             if (password_verify($password, $user['password'])) {
                 setcookie("user", json_encode($user), time() + 1000 * 60 * 60 * 24 * 14, "/");
-                header("Location:./index.php");
+                header("Location:./home.php");
             } else {
                 $password_err = "Password does not match!";
             }
@@ -83,6 +83,16 @@ if (isset($_POST['email'])) {
 
 <body class="index-page">
 
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+
+      </a>
+      </div>
+  </header>
 
       <?php
       
@@ -154,3 +164,7 @@ if (isset($_POST['email'])) {
     </section>
   
   </body>
+  </html>
+
+
+  

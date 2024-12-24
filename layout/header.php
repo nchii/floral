@@ -1,4 +1,5 @@
 <?php require_once('storage/db.php') ?>
+<?php require_once('storage/plantcrud.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 

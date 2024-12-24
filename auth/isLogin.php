@@ -13,17 +13,8 @@ if (!$user) {
             case 'admin':
                 $code = 1;
                 break;
-            case 'cashier':
+            case 'customer':
                 $code = 2;
-                break;
-            case 'kitchen':
-                $code = 3;
-                break;
-            case 'waiter':
-                $code = 4;
-                break;
-            default:
-                $code = 0;
                 break;
         }
     }

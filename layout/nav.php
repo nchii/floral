@@ -4,7 +4,6 @@
     <li><a href="plants.php">Plants</a></li>
     <li><a href="bouquets.php">Bouquets</a></li>
     <li><a href="contacts.php">Contact</a></li>
-    <li><a href="blog.html">Blog</a></li>
     <li class="dropdown"><a href="#"><span>Log in</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
       <ul>
         <li><a href="login.php">Log in</a></li>
