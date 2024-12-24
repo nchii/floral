@@ -156,7 +156,7 @@ if (isset($_POST['email'])) {
 
           </div>
           <div class="col-sm-6 px-0 ">
-            <img src="images/sunflower.png" alt="Login image" class=" vh-80 "
+            <img src="images/wedding.png" alt="Login image" class=" vh-80 "
               style="width:900px;object-fit: cover; object-position: left;">
           </div>
         </div>

@@ -1,4 +1,71 @@
+<?php require_once('../storage/db.php') ?>
+<?php require_once('../storage/bouquet_crud.php') ?>
 
+<?php
+$bouquetName = $bouquetNameErr = '';
+$price = $priceErr = '';
+$description = $descriptionErr = '';
+$itemImg = $itemImgErr = '';
+$invalid = '';
+
+if (isset($_POST['bouquetName'])) {
+
+  $bouquetName = $_POST['bouquetName'];
+  $description = $_POST['description'];
+  $price = $_POST['price'];
+  $file = $_FILES['itemImg'];
+  $itemImg = $file['name'];
+
+  if ($bouquetName === '') {
+    $bouquetNameErr = 'Name must not be blank!';
+    $invalid = "err";
+  } else {
+    if (!preg_match("/^[a-zA-Z\s]+$/", $bouquetName)) {
+      $bouquetNameErrrr = 'Name must be only string!';
+      $invalid = "err";
+    }
+  }
+
+  if ($description === '') {
+    $descriptionErr = 'Description must not be blank!';
+    $invalid = "err";
+  } 
+
+  if ($price === '') {
+    $priceErr = 'Price must not be blank!';
+    $invalid = "err";
+  } else {
+    if (!preg_match("/^\d+$/ ", $price)) {
+      $priceErr = 'Price must be only number!';
+      $invalid = "err";
+    }
+  }
+
+  if ($itemImg == "") {
+    $itemImgErr = " Image can't be blank!";
+    $invalid = "err";
+  } else {
+    $tmp = $file['tmp_name'];
+    $img = file_get_contents(filename: $tmp);
+    $data = base64_encode($img);
+
+  }
+
+
+  if (!$invalid) {
+    $status = save_bouquet($mysqli, $bouquetName, $price, $description, $data);
+    if ($status === true) {
+      echo "<script>location.replace('./bouquet_list.php')</script>";
+
+    } else {
+      $invalid = $status;
+    }
+
+  }
+
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +83,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -45,28 +114,121 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Flora</h1>
+        <h1 class="sitename">Active.</h1>
       </a>
 
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
+                    class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
-      </main>
+    </div>
+  </header>
 
-<footer id="footer" class="footer light-background">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-3 mb-3 mb-md-0">
-        <div class="widget">
-          <h3 class="widget-heading">About Us</h3>
-          <p class="mb-4">
-            There live the blind texts. Separated they live in Bookmarksgrove
-            right at the coast of the Semantics, a large language ocean.
-          </p>
-          <p class="mb-0">
-            <a href="#" class="btn-learn-more">Learn more</a>
-          </p>
+  <main class="main">
+
+    <section id="pricing" class="pricing section light-background">
+      <div class="card mx-auto" style="width: 500px;margin-top: 100px;">
+        <div class="plant-item p-4">
+          <h3>Add Bouquet</h3>
+          <div class="card-body">
+            <?php if ($invalid !== "" && $invalid !== "err") { ?>
+              <div class="alert alert-danger"><?= $invalid ?></div>
+            <?php } ?>
+            <form method="post" enctype="multipart/form-data">
+              <div class="form-group my-3">
+                <label class="form-label">Bouquet Name</label>
+                <input type="text" name="bouquetName" class="form-control" value="<?= $bouquetName ?>">
+                <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
+                  <?= $bouquetNameErr ?>
+                </div>
+              </div>            
+              <div class="form-group my-3">
+                <label class="form-label">Price</label>
+                <input type="text" name="price" class="form-control" value="<?= $price ?>">
+                <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
+                  <?= $priceErr ?>
+                </div>
+              </div>
+              <div class="form-group my-3">
+                <label class="form-label">Description</label>
+                <input type="text" name="description" class="form-control" value="<?= $description ?>">
+                <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
+                  <?= $descriptionErr ?>
+                </div>
+              </div>
+              <div class="form-group my-3">
+                <label class="form-label">Image</label>
+                <input type="file" name="itemImg" class="form-control">
+                <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
+                  <?= $itemImgErr ?>
+                </div>
+              </div>
+              <div class="form-group my-3">
+                <input type="submit" value="Submit" class="btn" style="color: var(--accent-color);
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  display: inline-block;
+  padding: 10px 40px 12px 40px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-family: var(--heading-font);
+  font-weight: 600;
+  transition: 0.3s;
+">
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-      <div class="col-md-6 col-lg-3 ps-lg-5 mb-3 mb-md-0">
+    </section><!-- /Pricing Section -->
+
+
+
+  </main>
+
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3 mb-3 mb-md-0">
+          <div class="widget">
+            <h3 class="widget-heading">About Us</h3>
+            <p class="mb-4">
+              There live the blind texts. Separated they live in Bookmarksgrove
+              right at the coast of the Semantics, a large language ocean.
+            </p>
+            <p class="mb-0">
+              <a href="#" class="btn-learn-more">Learn more</a>
+            </p>
+          </div>
+        </div>
+        cv class="col-md-6 col-lg-3 ps-lg-5 mb-3 mb-md-0">
         <div class="widget">
           <h3 class="widget-heading">Navigation</h3>
           <ul class="list-unstyled float-start me-5">
@@ -150,28 +312,28 @@
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </div>
-</footer>
+    </div>
+  </footer>
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-    class="bi bi-arrow-up-short"></i></a>
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
-<!-- Preloader -->
-<div id="preloader"></div>
+  <!-- Preloader -->
+  <div id="preloader"></div>
 
-<!-- Vendor JS Files -->
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/php-email-form/validate.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
-<!-- Main JS File -->
-<script src="assets/js/main.js"></script>
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
 
 </body>
 

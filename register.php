@@ -182,7 +182,7 @@
             </div>
 
           </div>
-          <div class="col-sm-7 px-0 " style="background-image:url(images/sunflower.png)">
+          <div class="col-sm-7 px-0 " style="background-image:url(images/bouquet1.png)">
             
           </div>
         </div>
