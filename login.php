@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 
 <?php require_once("./storage/db.php") ?>
 <?php require_once("./storage/register_crud.php") ?>
@@ -31,7 +31,7 @@ if (isset($_POST['email'])) {
             // }
             if (password_verify($password, $user['password'])) {
                 setcookie("user", json_encode($user), time() + 1000 * 60 * 60 * 24 * 14, "/");
-                header("Location:./index.php");
+                header("Location:./home.php");
             } else {
                 $password_err = "Password does not match!";
             }
@@ -79,6 +79,7 @@ if (isset($_POST['email'])) {
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <script src="./assets/js/jquery.js"></script>
 </head>
 
 <body class="index-page">
@@ -94,23 +95,7 @@ if (isset($_POST['email'])) {
       </div>
   </header>
 
-      <?php
-      
-        //  ADMIN Loign Page (Test)
-
-        // $admin = get_admin($mysqli);
-        // $admin = $admin->fetch_all();
-        // $admin_user = array_filter($admin,function($admin){
-        //   return $admin[4] == 1;
-        // });
-        // if(!$admin_user){
-        //     admin($mysqli,"admin","admin@gmail.com","password");
-        // }
-
-        
-        
-        
-      ?>
+    
 <section class="vh-100">
       <div class="container-fluid">
         <div class="row">
@@ -129,7 +114,7 @@ if (isset($_POST['email'])) {
                 </div>
 
                 <div data-mdb-input-init class="form-outline mb-2 form-floating">
-                    <input type="password" name="password" class="form-control " value="<?= $password?>" />
+                    <input type="password" id="password" name="password" class="form-control " value="<?= $password?>" />
                     <label class="form-label" for="password">Password</label>
                     <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
                       <?= $password_err ?>
@@ -162,6 +147,21 @@ if (isset($_POST['email'])) {
         </div>
       </div>
     </section>
+
+    <script>
+        let show = $("#show");
+        let password = $("#password");
+       
+        show.on("click",()=>{
+            if(show.is(":checked")){
+                password.get(0).type = "text";
+    
+            }else{
+                password.get(0).type = "password";
+             
+            }
+        })
+    </script>
   
   </body>
   </html>

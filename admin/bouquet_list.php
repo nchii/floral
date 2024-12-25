@@ -96,8 +96,11 @@
 
           <div class="col-lg-12 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="pricing">
-              <div class="plant-item m-5">
-                <a href="add_bouquet.php" class="btn-buy">Add New Bouquet</a>
+              <div class="bouquet-item m-5">
+              <div class="d-flex justify-content-end align-items-center my-3">
+                <a href="add_bouquet.php" class="btn-buy"
+                  style="padding: 10px 15px; background-color: var(--accent-color); border-radius: 18px; color:white;">Add New Bouquet</a>
+              </div>
 
                 <div class="card m-3 border-0">
                   <div class="card-body">
@@ -113,7 +116,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $i=1; $bouquet_list = get_all_bouquet($mysqli); ?>
+                        <?php $i=1; $bouquet_list = get_all_bouquets($mysqli); ?>
                         <?php while ($bouquet = $bouquet_list->fetch_assoc()) { ?>
 
                           <tr>

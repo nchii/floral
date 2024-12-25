@@ -1,30 +1,11 @@
 <?php
 
-// ADMIN Loign Page (Test)
-
-// function admin($mysqli,$name,$email,$password)
-// {
-//     $sql = "INSERT INTO `admin`(`name`,`email`,`password`) VALUE ('$name','$email','$password')";
-//     return  $mysqli->query($sql);
-// }
-
-// function get_admin_with_id($mysqli,$id)
-// {
-//     $sql = "SELECT * FROM `admin` WHERE `id`=$id";
-//     $admin = $mysqli->query($sql);
-//     return $admin->fetch_assoc();
-// }
-
-// function get_admin($mysqli)
-// {
-//     $sql = "SELECT * FROM `admin`";
-//     return  $mysqli->query($sql);
-// }
 
 
-function user_register($mysqli,$name,$email,$phone,$address,$password)
+
+function user_register($mysqli,$name,$email,$phone,$address,$encrptPassword)
 {
-    $sql = "INSERT INTO `user`(`name`,`email`,`phone`,`address`,`password`) VALUE ('$name','$email','$phone','$address','$password')";
+    $sql = "INSERT INTO `user`(`name`,`email`,`phone`,`address`,`password`) VALUE ('$name','$email','$phone','$address','$encrptPassword')";
     return $mysqli->query($sql);
 }
 

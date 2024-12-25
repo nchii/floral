@@ -67,6 +67,7 @@
           $address_err = "";
           $password_err = "";       
           $confirm_password_err = "";
+          $invalid = '';
 
         if(isset($_POST['signup'])){
           $name = $_POST['name'];
@@ -76,41 +77,53 @@
           $password = $_POST['password'];
           $confirm_password = $_POST['confirm_password'];
 
-          if(empty($name)){
+          if($name === ""){
             $name_err = "The name field is required";
+            $invalid = 'err';
           }
-          if(empty($email)){
+          if($email === ""){
             $email_err = "The email field is required";
+            $invalid = 'err';
           }
-          if(empty($phone)){
+          if($phone === ""){
             $phone_err = "Phone number is required";
-          }else{
-            if(!preg_match('/^[0-9][1-9]*$/',$phone)){
-              $phone_err = "Does not match with phone number format ";
+            $invalid = 'err';
+            }else{
+              if(!preg_match('/^[0-9][0-9]*$/',$phone)){
+                $phone_err = "Does not match with phone number format ";
+              }
             }
-          }
           
-          if(empty($address)){
+          if($address === ""){
             $address_err = "The address field is required";
+            $invalid = 'err';
           }
-          if(empty($password)){
+          if($password === ""){
             $password_err = "The password field is required";
+            $invalid = 'err';
+          }
+          if($confirm_password === ""){
+            $confirm_password_err = "The Confirm password field is required";
+            $invalid = 'err';
           }
           if($confirm_password != $password){
             $confirm_password_err = "The password does not match";
+            $invalid = 'err';
           }
-          if(empty($name_err) && empty($email_err) && empty($phone_err) && empty($address_err) && empty($password_err) && empty($confirm_password_err) && ($confirm_password == $password)){
-
+          
+          if(!$invalid){
             $encrptPassword = password_hash($password,PASSWORD_BCRYPT);
-            $query = "INSERT INTO `user`(`name`,`email`,`phone`,`address`,`password`) VALUE ('$name','$email','$phone','$address','$encrptPassword')";
-            $result = mysqli_query($mysqli,$query);
-            if($result == true){
+            $query = user_register($mysqli,$name,$email,$phone,$address,$encrptPassword);
+            
+            if($query === true){
               echo "<script> alert('Registration Successfull');</script>";
+                // header("Location:login.php");
+              }
             }else{
-              die('Error: '.mysqli_error($sql));
-            }
+              // die('Error: '.mysqli_error($sql));
+            }    
         }     
-      }
+      
               
       ?>
     
@@ -119,7 +132,7 @@
       <div class="card m-3 p-3 " style="border:none;">
         <div class="row">
           <div class="card col-sm-5 ">
-            <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-3 pt-xl-0 mt-xl-n5">
+            <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-4 pt-3 pt-xl-0 mt-xl-n5">
 
               <form style="width: 25rem;" method="post">
 

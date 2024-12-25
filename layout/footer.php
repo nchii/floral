@@ -125,7 +125,7 @@
 <script>
   $("#navmenu a").toArray().forEach(element => {
     if(element.href == location.href){
-      element.class = "active";
+      element.className = "active";
     }
 });
 </script>

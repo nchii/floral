@@ -20,7 +20,7 @@
 
     function create_table($mysqli){
 
-        $sql = "CREATE TABLE IF NOT EXISTS `user` (`id` INT AUTO_INCREMENT ,`name` VARCHAR(45) NOT NULL,`email` VARCHAR(45) NOT NULL UNIQUE, `phone` VARCHAR(45),`address` VARCHAR(225) ,`password` VARCHAR(100) NOT NULL,`role` INT DEFAULT 2, `profile` LONGTEXT , PRIMARY KEY(`id`))";
+        $sql = "CREATE TABLE IF NOT EXISTS `user` (`id` INT AUTO_INCREMENT ,`name` VARCHAR(45) NOT NULL,`email` VARCHAR(45) NOT NULL UNIQUE, `phone` VARCHAR(45),`address` VARCHAR(225) ,`password` VARCHAR(100) NOT NULL,`role` INT DEFAULT 2, `profile` LONGTEXT NOT NULL, PRIMARY KEY(`id`))";
         if(!$mysqli->query($sql)){
             return false;
         }
