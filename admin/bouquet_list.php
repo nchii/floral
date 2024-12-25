@@ -91,6 +91,7 @@
 
 
       <div class="container">
+        <div class="card">
 
         <div class="row gy-2">
 
@@ -102,9 +103,12 @@
                   style="padding: 10px 15px; background-color: var(--accent-color); border-radius: 18px; color:white;">Add New Bouquet</a>
               </div>
 
+              <div class="d-flex justify-content-start align-items-center my-3">
+              <h3>Bouquet List</h3>
+              </div>
                 <div class="card m-3 border-0">
                   <div class="card-body">
-                    <h3>Bouquet List</h3>
+                  
                     <table class="table table-bordered table-striped mt-3">
                       <thead>
                         <tr>
@@ -142,6 +146,7 @@
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div><!-- End Pricing Item -->
 
