@@ -11,8 +11,13 @@ function get_all_plants($mysqli){
 }
 
 function get_plant_details($mysqli,$id){
-  $sql="SELECT * FROM `plant` WHERE `id`=$id";
+  $sql="SELECT * FROM `plant` WHERE `id`= '$id'";
   $plant = $mysqli->query($sql);
   return $plant->fetch_assoc(); 
 }
+
+// function update_plant($mysqli,$plantName,$price,$description,$plantImg,$size,$id){
+//   $sql="UPDATE `plant` SET `name`='$plantName',`price`=$price,`description`='$description',`img`='$plantImg',`size`='$size' WHERE `id`=$id";
+//   return $mysqli->query($sql);
+// }
 

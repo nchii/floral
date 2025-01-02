@@ -1,3 +1,4 @@
+<?php session_start();?>
 <?php require_once('layout/header.php')?>
 <?php require_once('layout/nav.php')?>
 </div>
@@ -6,7 +7,21 @@
 <main>
     <section id="pricing" class="pricing section light-background">
         <div class="container">
-        <?php $detail = get_bouquet_details($mysqli, $_GET['id']); ?>
+        <?php $detail = get_bouquet_details($mysqli, $_GET['id']); 
+          if(isset($_GET['addToCard'])){
+            $status = true;
+            foreach ($cart_list as $i => $bouquet) {
+              if($bouquet['id'] == $detail['id'] && $bouquet['type'] == 'bouquet'){
+                $status = false;
+                $cart_list[$i]['quantity'] += 1;
+              }
+            }
+            if($status){
+              array_push($cart_list, ['type'=>"bouquet",'quantity'=>1,'id'=>$detail['id'],'name'=>$detail['name'],'price'=>$detail['price'],'description'=>$detail['description'],'img'=>$detail['img']]);
+            }
+            $_SESSION['cart'] = $cart_list;
+          }
+        ?>
             <div class="card" style="max-width: 800px; margin: auto; background-color:white; border: none;">
             <div class="card-body">
               <div class="row">
@@ -26,7 +41,7 @@
                     <td><?= $detail['description'] ?></td>
                   </tr>
                   </table><br>
-                <button class="btn" style="background-color:var(--accent-color); border-radius:20px; padding:10px 20px; color:white;">Add to Cart</button>
+                <a href="?id=<?= $detail['id'] ?>&addToCard" class="btn" style="background-color:var(--accent-color); border-radius:20px; padding:10px 20px; color:white;">Add to Cart</a>
               </div>
               </div>
             </div>
