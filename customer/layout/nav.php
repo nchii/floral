@@ -4,12 +4,22 @@
     <li><a href="plants.php">Plants</a></li>
     <li><a href="bouquets.php">Bouquets</a></li>
     <li><a href="contacts.php">Contact</a></li>
-    <li class="icon-cart">
-      <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
-      </svg>
-      <span>0</span>
-    </li>
+    <li><a href="cart_list.php">
+      <span class="position-relative">
+        &#x1F6D2;
+        <?php 
+          $count = 0;
+          if(isset($_SESSION['cart'])){
+            foreach ($_SESSION['cart'] as $key => $plant) {
+              $count += $plant['quantity'];
+            }
+          }
+        ?>
+        <?php if($count > 0){ ?>
+          <div class="badge rounded-pill bg-danger" style="position:absolute;right:-15px;top:-8px;font-size:8px;"><?= $count ?></div>
+        <?php } ?>
+      </span>
+    </a></li>
     <li class="dropdown">
       <img src="assets/img/home1.png" alt="" style="width: 45px; height: 45px; border-radius: 50%; cursor: pointer;" class="dropdown-toggle" data-toggle="dropdown">
       <ul class="dropdown-menu">

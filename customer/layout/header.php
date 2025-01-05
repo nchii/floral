@@ -1,6 +1,7 @@
 <?php require_once('../auth/islogin.php') ?>
 <?php require_once('storage/db.php') ?>
 <?php require_once('storage/plantcrud.php') ?>
+<?php require_once('storage/cart_crud.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 
