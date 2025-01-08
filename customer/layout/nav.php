@@ -26,11 +26,22 @@
       <li><a href="profile.php">Profile</a></li>
       <li>
         <form method="post" style="display:inline; padding:10px;">
-        <button name="logout" style="background:none;border:none;padding:5px;color:inherit;cursor:pointer; font-size: 14px;">Log out</button>
+          <button name="logout" style="background:none;border:none;padding:5px;color:inherit;cursor:pointer; font-size: 14px;">Log out</button>
         </form>
+        <?php
+          if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logout'])) {
+        session_start();
+        session_unset();
+        session_destroy();
+        header("Location: index.php");
+        exit();
+          }
+        ?>
       </li>
       </ul>
     </li>
   </ul>
   <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
 </nav>
+</div>
+  </header>

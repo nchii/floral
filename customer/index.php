@@ -14,8 +14,7 @@ if(have_admin($mysqli)){
 
 
       
-    </div>
-  </header>
+    
 
   <main class="main">
 
