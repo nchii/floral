@@ -78,7 +78,7 @@ $currentPage = 0;
         </div><!-- End Pricing Item -->
 
 
-      </div>
+      </div>       
 
     </div>
 

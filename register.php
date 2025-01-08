@@ -116,8 +116,7 @@
             $query = user_register($mysqli,$name,$email,$phone,$address,$encrptPassword);
             
             if($query === true){
-              echo "<script> alert('Registration Successfull');</script>";
-                // header("Location:login.php");
+              header("Location:login.php");
               }
             }else{
               // die('Error: '.mysqli_error($sql));

@@ -3,5 +3,5 @@
 if ($user['role'] == 1) {
     header("location:./admin/index.php");
 } elseif ($user['role'] == 2) {
-    header("location:index.php");
+    header("location:customer/index.php");
 }
