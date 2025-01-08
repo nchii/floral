@@ -56,11 +56,11 @@
             return false;
         }
     
-        $sql = "CREATE TABLE IF NOT EXISTS `bouquet_order` (`id` INT AUTO_INCREMENT,`bouquet_id` INT NOT NULL,`invoice_id` INT NOT NULL,PRIMARY KEY(`id`), FOREIGN KEY (`bouquet_id`) REFERENCES `bouquet`(`id`), FOREIGN KEY (`invoice_id`) REFERENCES `invoice`(`id`))";
+        $sql = "CREATE TABLE IF NOT EXISTS `bouquet_order` (`id` INT AUTO_INCREMENT,`bouquet_id` INT NOT NULL,`invoice_id` INT NOT NULL,`qty` INT NOT NULL,PRIMARY KEY(`id`), FOREIGN KEY (`bouquet_id`) REFERENCES `bouquet`(`id`), FOREIGN KEY (`invoice_id`) REFERENCES `invoice`(`id`))";
         if(!$mysqli->query($sql)){
             return false;
         }
-        $sql = "CREATE TABLE IF NOT EXISTS `plant_order`(`id` INT AUTO_INCREMENT,`plant_id` INT NOT NULL,`invoice_id` INT NOT NULL,PRIMARY KEY(`id`),FOREIGN KEY (`plant_id`) REFERENCES `plant`(`id`), FOREIGN KEY (`invoice_id`) REFERENCES `invoice`(`id`))";
+        $sql = "CREATE TABLE IF NOT EXISTS `plant_order`(`id` INT AUTO_INCREMENT,`plant_id` INT NOT NULL,`invoice_id` INT NOT NULL,`qty` INT NOT NULL,PRIMARY KEY(`id`),FOREIGN KEY (`plant_id`) REFERENCES `plant`(`id`), FOREIGN KEY (`invoice_id`) REFERENCES `invoice`(`id`))";
         if(!$mysqli->query($sql)){
             return false;
         }

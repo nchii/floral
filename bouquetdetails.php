@@ -1,6 +1,7 @@
-<?php session_start();?>
 <?php require_once('layout/header.php')?>
 <?php require_once('layout/nav.php')?>
+<?php require_once('storage/bouquet_crud.php')?>
+<?php require_once('storage/cart_crud.php')?>
 </div>
 </header>
 
@@ -20,6 +21,7 @@
               array_push($cart_list, ['type'=>"bouquet",'quantity'=>1,'id'=>$detail['id'],'name'=>$detail['name'],'price'=>$detail['price'],'description'=>$detail['description'],'img'=>$detail['img']]);
             }
             $_SESSION['cart'] = $cart_list;
+            echo "<script>location.replace('./bouquets.php');</script>";
           }
         ?>
             <div class="card" style="max-width: 800px; margin: auto; background-color:white; border: none;">

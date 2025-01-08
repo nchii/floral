@@ -1,4 +1,3 @@
-<?php session_start();?>
 <?php require_once('layout/header.php')?>
 <?php require_once('layout/nav.php')?>
 <?php require_once('storage/plantcrud.php')?>
@@ -28,6 +27,7 @@
                 array_push($cart_list, ['type'=>"plant",'quantity'=>1,'id'=>$cart['id'],'name'=>$cart['name'],'price'=>$cart['price'],'size'=>$cart['size'],'description'=>$cart['description'],'img'=>$cart['img']]);
               }
               $_SESSION['cart'] = $cart_list;
+              echo "<script>location.replace('./plants.php');</script>";
             }
           }
         ?>

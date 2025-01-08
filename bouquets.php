@@ -2,6 +2,7 @@
 <?php require_once('storage/bouquet_crud.php') ?>
 <?php require_once('layout/header.php') ?>
 <?php require_once('layout/nav.php') ?>
+<?php require_once('storage/cart_crud.php')?>
 </div>
 </header>
 
@@ -21,10 +22,7 @@
 
         <div class="row gy-4">
           <?php $i = 1;
-          $bouquet_list = get_all_bouquets($mysqli);
-          if(isset($_POST['search'])){
-            $bouquet_list = get_all_bouquets_filter($mysqli,$_POST['search']);
-          } ?>
+          $bouquet_list = get_all_bouquets($mysqli); ?>
           <?php while ($bouquet = $bouquet_list->fetch_assoc()) { ?>
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
               <div class="pricing-item">

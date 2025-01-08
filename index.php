@@ -3,6 +3,7 @@
 <?php require_once("storage/usercrud.php") ?>
 <?php require_once("storage/plantcrud.php") ?>
 <?php require_once("storage/bouquet_crud.php") ?>
+<?php require_once('storage/cart_crud.php')?>
 
 <?php 
 

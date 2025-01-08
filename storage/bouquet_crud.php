@@ -19,7 +19,7 @@ function get_bouquet_details($mysqli,$id){
     $sql="SELECT * FROM `bouquet` WHERE `id`=$id";
     $bouquet = $mysqli->query($sql);
     return $bouquet->fetch_assoc(); 
-  }
+}
   // function get_user_filter($mysqli,$key){
   //   $sql = "SELECT * FROM `bouquet` WHERE `name` LIKE '%$key%'";  
   //   return $mysqli->query($sql);

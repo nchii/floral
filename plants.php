@@ -1,11 +1,10 @@
-<?php session_start(); ?>
 <?php require_once('layout/header.php') ?>
 <?php require_once('layout/nav.php') ?>
 <?php require_once('storage/db.php') ?>
 <?php require_once('storage/plantcrud.php') ?>
+<?php require_once('storage/cart_crud.php')?>
 </div>
 </header>
-
 
 <body class="index-page">
   <main class="main">
@@ -23,10 +22,7 @@
 
         <div class="row gy-4">
           <?php $i = 1;
-          $plant_list = get_all_plants($mysqli); 
-          if(isset($_POST['search'])){
-            $plant_list = get_all_plants_filter($mysqli,$_POST['search']);
-          }?>
+          $plant_list = get_all_plants($mysqli); ?>
           <?php while ($plant = $plant_list->fetch_assoc()) { ?>
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
               <div class="pricing-item">
