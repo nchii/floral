@@ -43,3 +43,13 @@ body {
 .checkout-btn:hover {
     background-color: #218838;
 }
+.search {
+    border: 1px solid #adadad;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  .search input {
+    border: none;
+    outline: none;
+    margin-left: 8px;
+  }

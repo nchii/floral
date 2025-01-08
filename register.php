@@ -137,7 +137,7 @@
               <form style="width: 25rem;" method="post">
 
                 <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Register to <span
-                    class="sitename">Flora</span></h3>
+                    class="sitename">Floral</span></h3>
 
                 <div data-mdb-input-init class="form-outline mb-2 form-floating">
                   <input type="text" name="name" class="form-control <?php if($name_err != ""){ ?>

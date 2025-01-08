@@ -6,6 +6,7 @@
 </div>
 </header>
 
+
 <body class="index-page">
   <main class="main">
 
@@ -22,7 +23,10 @@
 
         <div class="row gy-4">
           <?php $i = 1;
-          $plant_list = get_all_plants($mysqli); ?>
+          $plant_list = get_all_plants($mysqli); 
+          if(isset($_POST['search'])){
+            $plant_list = get_all_plants_filter($mysqli,$_POST['search']);
+          }?>
           <?php while ($plant = $plant_list->fetch_assoc()) { ?>
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
               <div class="pricing-item">

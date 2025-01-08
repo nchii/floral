@@ -103,7 +103,7 @@ if (isset($_POST['email'])) {
             <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
               <form style="width: 23rem;" method="post">
                 <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in to <span
-                    class="sitename">Flora</span></h3>
+                    class="sitename">Floral</span></h3>
                   
                 <div data-mdb-input-init class="form-outline mb-4 form-floating">
                   <input type="email" name="email" class="form-control " value="<?= $email ?>"/>

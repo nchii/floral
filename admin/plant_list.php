@@ -3,9 +3,12 @@
 <?php require_once('./layout/header.php') ?>
 <?php require_once('./layout/nav.php') ?>
 
+
 </div>
 </header>
-
+<?php
+$currentPage = 0;
+?>
 <main class="main">
 
   <section id="pricing" class="pricing section light-background">
@@ -40,7 +43,11 @@
                     </thead>
                     <tbody>
                       <?php $i = 1;
-                      $plant_list = get_all_plants($mysqli); ?>
+                      $plant_list = get_all_plants($mysqli);
+                      if(isset($_POST['search'])){
+                        $plant_list = get_all_plants_filter($mysqli,$_POST['search']);
+                      }
+                      ?>
                       <?php while ($plant = $plant_list->fetch_assoc()) { ?>
 
                         <tr>
@@ -53,11 +60,11 @@
                             <img style="width: 70px;height: 70px;border-radius: 50%;"
                               src="data:image/' . $type . ';base64,<?= $plant['img'] ?>">
                           </td>
-                          <th>
+                          <td>
                             <button class="btn btn-sm btn-primary"><i class="fa fa-pen"></i></button>
-                            <button class="btn btn-sm btn-danger deleteSelect" data-value="<?= "" ?>"
-                              data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa fa-trash"></i></button>
-                          </th>
+                            <button class="btn btn-sm btn-danger deleteSelect" data-val="<?= $plant['id'] ?>"
+                              data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                          </td>
                         </tr>
                         <?php $i++;
                       }
@@ -77,8 +84,8 @@
 
   </section><!-- /Pricing Section -->
 
-
+  
 
 </main>
 
-<?php require_once('./layout/footer.php') ?>
+<?php require_once('../layout/footer.php') ?>

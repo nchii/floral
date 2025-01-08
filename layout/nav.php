@@ -1,5 +1,14 @@
+<link rel="stylesheet" href="./assets/css/style.css" />
 <nav id="navmenu" class="navmenu">
+
   <ul>
+    <form method="post">
+      <div class="d-flex search">
+        <i class="bi bi-search"></i>
+        <input type="text" name="search" placeholder="Search" />
+      </div>
+    </form>
+         
     <li><a href="index.php">Home</a></li>
     <li><a href="plants.php">Plants</a></li>
     <li><a href="bouquets.php">Bouquets</a></li>

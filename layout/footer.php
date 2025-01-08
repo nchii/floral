@@ -109,6 +109,25 @@
 <!-- Preloader -->
 <div id="preloader"></div>
 
+<div id="deleteModal" class="modal fade modal-sm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title"><h5>Are You Sure?<h5></div>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Do you wanna delete?
+        </div>
+        <div class="modal-footer">       
+            <button id="confirmDelete" class="button btn btn-danger">Delete</button>
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>         
+        </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- Vendor JS Files -->
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -123,11 +142,24 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/jquery.js"></script>
 <script>
+  let deleteSelect = $(".deleteSelect");
+  let deleteKey = undefined;
+  
+  deleteSelect.on("click",function(e){
+    deleteKey = e.currentTarget.getAttribute("data-value");
+    
+  })
+
+  $("#confirmDelete").on("click",()=>location.replace("?deleteId="+deleteKey));
   $("#navmenu a").toArray().forEach(element => {
     if(element.href == location.href){
       element.className = "active";
     }
 });
+let url =location.href.split("/")
+    console.log(url[url.length-1].includes("list"));
+    let fileName = url[url.length-1];
+    if(!fileName.includes("list")) $("#search-wapper").html("")
 </script>
 
 </body>

@@ -1,5 +1,13 @@
+<link rel="stylesheet" href="../assets/css/style.css" />
 <nav id="navmenu" class="navmenu">
+
   <ul>
+    <form method="post">
+      <div class="d-flex search">
+        <i class="bi bi-search"></i>
+        <input type="text" name="search" placeholder="Search" />
+      </div>
+    </form>
     <li><a href="index.php">Home</a></li>
     <li><a href="plant_list.php">Plants</a></li>
     <li><a href="bouquets_list.php">Bouquets</a></li>
@@ -12,3 +20,5 @@
   </ul>
   <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
 </nav>
+</div>
+</header>
