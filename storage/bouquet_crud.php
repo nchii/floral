@@ -20,10 +20,25 @@ function get_bouquet_details($mysqli,$id){
     $bouquet = $mysqli->query($sql);
     return $bouquet->fetch_assoc(); 
 }
-  // function get_user_filter($mysqli,$key){
-  //   $sql = "SELECT * FROM `bouquet` WHERE `name` LIKE '%$key%'";  
-  //   return $mysqli->query($sql);
-  // }
+function get_bouquet_id($mysqli,$id){
+  $sql = "SELECT * FROM `bouquet` WHERE `id`=$id";
+  $resule = $mysqli->query($sql);
+  return $resule->fetch_assoc();
+}
+
+function update_bouquet($mysqli,$bouquetName,$price,$description,$bouquetImg,$id){
+  $sql= "UPDATE `bouquet` SET `name`='$bouquetName',`price`='$price',`description`='$description',`img`='$bouquetImg' WHERE `id`=$id";
+  return $mysqli->query($sql);
+}
+function delete_bouquet($mysqli, $id){
+  $sql = "DELETE FROM `bouquet` WHERE `id` = $id";
+  try {
+    $mysqli->query($sql);
+    return true;
+  } catch (\Throwable $th) {
+    return false;
+  }
+}
 
 
 

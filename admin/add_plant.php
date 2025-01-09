@@ -15,14 +15,13 @@ $error = false;
 
 if(isset($_GET['id'])){
   $id = $_GET['id'];
-  // $plant = get_plant_id($mysqli,$id);
-  // $plantName
-  // $price
-  // $description
-  // $plantImg
-  // $size
-  // $id
-  
+  $plant = get_plant_id($mysqli,$id);
+  $plantName = $plant['name'];
+  $size = $plant['size'];
+  $price = $plant['price'];
+  $description = $plant['description'];
+  $plantImg = $plant['img'];
+   
   
 }
 
@@ -105,13 +104,7 @@ if (isset($_POST['plantName'])) {
 }
 
 ?>
-  
- <?php if(isset($_GET['id'])){
-  echo "<h2>Update Plant</h2>";
- }else{
-  echo "<h2>Add New Plant</h2>";
- }
- ?>
+
 
   <main class="main">
 

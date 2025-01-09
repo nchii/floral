@@ -10,6 +10,18 @@ $description = $descriptionErr = '';
 $itemImg = $itemImgErr = '';
 $invalid = '';
 
+if(isset($_GET['id'])){
+  $id = $_GET['id'];
+  $bouquet = get_bouquet_id($mysqli,$id);
+  $bouquetName = $bouquet['name'];
+  $price = $bouquet['price'];
+  $description = $bouquet['description'];
+  $bouquetImg = $bouquet['img'];
+  
+   
+  
+}
+
 if (isset($_POST['bouquetName'])) {
 
   $bouquetName = $_POST['bouquetName'];
@@ -55,6 +67,11 @@ if (isset($_POST['bouquetName'])) {
 
 
   if (!$invalid) {
+    if(isset($_GET['id'])){
+      update_bouquet($mysqli,$bouquetName,$price,$description,$bouquetImg,$id);
+      header("Location:bouquet_list.php");
+    }else{
+
     $status = save_bouquet($mysqli, $bouquetName, $price, $description, $data);
     if ($status === true) {
       echo "<script>location.replace('./bouquet_list.php')</script>";
@@ -62,7 +79,7 @@ if (isset($_POST['bouquetName'])) {
     } else {
       $invalid = $status;
     }
-
+  }
   }
 
 
