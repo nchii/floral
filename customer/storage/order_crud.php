@@ -6,8 +6,8 @@ function save_order($mysqli,$cart_list,$userId){
         foreach ($cart_list as $item) { 
             $total = $total + $item['quantity']*$item['price'];
         }
-
-        $sql = "INSERT INTO `invoice`( `user_id`,`total_amount`) VALUES ( $userId,$total)";
+        $ord_no= 'ORD-'.uniqid();
+        $sql = "INSERT INTO `invoice`(`order_no`,`user_id`,`total_amount`,`date`) VALUES ( '$ord_no',$userId,$total,date(now())";
             if ($mysqli->query($sql)) {
                 $lastId = $mysqli->insert_id;
                 foreach ($cart_list as $item) { 

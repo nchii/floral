@@ -51,7 +51,7 @@
             return false;
         }
     
-        $sql = "CREATE TABLE IF NOT EXISTS `invoice`(`id` INT AUTO_INCREMENT,`user_id` INT NOT NULL,`total_amount` INT NOT NULL,PRIMARY KEY(`id`),FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) )";
+        $sql = "CREATE TABLE IF NOT EXISTS `invoice`(`id` INT AUTO_INCREMENT,`ord_no` VARCHAR(50) NOT NULL,`user_id` INT NOT NULL,`total_amount` INT NOT NULL,`date` DATETIME NOT NULL,PRIMARY KEY(`id`),FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) )";
         if(!$mysqli->query($sql)){
             return false;
         }
