@@ -3,31 +3,38 @@
 <?php require_once('./layout/header.php') ?>
 <?php require_once('./layout/nav.php') ?>
 
-
 </div>
 </header>
 <?php
 $currentPage = 0;
 ?>
 <main class="main">
-
+  
   <section id="pricing" class="pricing section light-background">
-
-
+    
+    
     <div class="container">
-
+      
       <div class="card">
-
+        
         <div class="col-lg-12 col-md-6" data-aos="fade-up" data-aos-delay="100">
           <div class="pricing">
             <div class="plant-item m-5">
               <div class="d-flex justify-content-end align-items-center my-3">
                 <a href="add_plant.php" class="btn-buy"
-                  style="padding: 10px 15px; background-color: var(--accent-color); border-radius: 18px; color:white;">Add New Plant</a>
+                style="padding: 10px 15px; background-color: var(--accent-color); border-radius: 18px; color:white;">Add New Plant</a>
               </div>
               <div class="d-flex justify-content-between align-items-center">
                 <h3>Item List</h3>
               </div>
+              <?php 
+                if(isset($_GET['deleteId'])){
+                  if(delete_plant($mysqli,$_GET['deleteId'])){ ?>
+                    <div class="alert alert-warning">Plant is deleted!</div>
+                 <?php }else{ ?>
+                    <div class="alert alert-danger">Can't delete Plant!</div>
+                 <?php }
+                } ?>
               <div class="card m-3 border-0">
                 <div class="card-body">
                   <table class="table table-bordered table-striped mt-3">
@@ -42,6 +49,7 @@ $currentPage = 0;
                       </tr>
                     </thead>
                     <tbody>
+                  
                       <?php $i = 1;
                       $plant_list = get_all_plants($mysqli);
                       if(isset($_POST['search'])){
@@ -61,9 +69,9 @@ $currentPage = 0;
                               src="data:image/' . $type . ';base64,<?= $plant['img'] ?>">
                           </td>
                           <td>
-                            <button class="btn btn-sm btn-primary"><i class="fa fa-pen"></i></button>
+                          <a class="btn btn-sm btn-primary" href="./add_plant.php?plant_id=<?= $plant["id"] ?>"><i class="bi bi-pen"></i></a>
                             <button class="btn btn-sm btn-danger deleteSelect" data-val="<?= $plant['id'] ?>"
-                              data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                              data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
                           </td>
                         </tr>
                         <?php $i++;

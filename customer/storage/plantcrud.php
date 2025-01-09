@@ -1,6 +1,6 @@
 <?php
 
-function save_plant($mysqli,$plantName,$price,$description,$plantImg,$size,){
+function save_plant($mysqli,$plantName,$price,$description,$plantImg,$size){
   $sql="INSERT INTO `plant`(`name`,`price`,`description`,`img`,`size`) VALUES ('$plantName',$price,'$description','$plantImg','$size') ";
   return $mysqli->query($sql);
 }
@@ -15,9 +15,10 @@ function get_plant_details($mysqli,$id){
   $plant = $mysqli->query($sql);
   return $plant->fetch_assoc(); 
 }
+function update_plant($mysqli,$plantName,$price,$description,$plantImg,$size,$id)
+{
+    $sql = "UPDATE  `plant` SET `name`='$plantName',`price`='$price', `description`='$description', `img` = '$plantImg',`size`='$size', WHERE `id`= $id";
+    return $mysqli->query($sql);
+}
 
-// function update_plant($mysqli,$plantName,$price,$description,$plantImg,$size,$id){
-//   $sql="UPDATE `plant` SET `name`='$plantName',`price`=$price,`description`='$description',`img`='$plantImg',`size`='$size' WHERE `id`=$id";
-//   return $mysqli->query($sql);
-// }
 

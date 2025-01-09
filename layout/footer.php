@@ -146,8 +146,7 @@
   let deleteKey = undefined;
   
   deleteSelect.on("click",function(e){
-    deleteKey = e.currentTarget.getAttribute("data-value");
-    
+    deleteKey = e.currentTarget.getAttribute("data-val");
   })
 
   $("#confirmDelete").on("click",()=>location.replace("?deleteId="+deleteKey));

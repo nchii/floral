@@ -10,7 +10,7 @@
     </form>
     <li><a href="index.php">Home</a></li>
     <li><a href="plant_list.php">Plants</a></li>
-    <li><a href="bouquets_list.php">Bouquets</a></li>
+    <li><a href="bouquet_list.php">Bouquets</a></li>
     <li><a href="contacts.php">Orders</a></li>
     <li>
       <form method="post" style="display:inline; padding:10px;">
