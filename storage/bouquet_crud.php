@@ -2,6 +2,7 @@
 
 function save_bouquet($mysqli,$bouquetName,$price,$description,$bouquetImg){
   $sql="INSERT INTO `bouquet`(`name`,`price`,`description`,`img`) VALUES ('$bouquetName',$price,'$description','$bouquetImg')";
+  var_dump($sql);
   return $mysqli->query($sql);
 }
 
