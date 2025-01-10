@@ -30,7 +30,7 @@
             return false;
         }*/
     
-        $sql = "CREATE TABLE IF NOT EXISTS `bouquet`(`id` INT AUTO_INCREMENT,`name` VARCHAR(45) NOT NULL, `description` VARCHAR(225) NOT NULL,`price` INT NOT NULL,`img` LONGTEXT NOT NULL,PRIMARY KEY(`id`))";
+        $sql = "CREATE TABLE IF NOT EXISTS `bouquet`(`id` INT AUTO_INCREMENT,`name` VARCHAR(45) NOT NULL, `description` TEXT NOT NULL,`price` INT NOT NULL,`img` LONGTEXT NOT NULL,PRIMARY KEY(`id`))";
         if(!$mysqli->query($sql)){
             return false;
         }

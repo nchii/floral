@@ -18,7 +18,6 @@ if(isset($_GET['id'])){
   $description = $bouquet['description'];
   $bouquetImg = $bouquet['img'];
   
-   
   
 }
 
@@ -68,22 +67,22 @@ if (isset($_POST['bouquetName'])) {
 
   if (!$invalid) {
     if(isset($_GET['id'])){
-      update_bouquet($mysqli,$bouquetName,$price,$description,$bouquetImg,$id);
+      update_bouquet($mysqli,$bouquetName,$price,$description,$data,$id);
       header("Location:bouquet_list.php");
     }else{
 
-    $status = save_bouquet($mysqli, $bouquetName, $price, $description, $data);
-    if ($status === true) {
-      echo "<script>location.replace('./bouquet_list.php')</script>";
+      $status = save_bouquet($mysqli, $bouquetName, $price, $description, $data);
+      if ($status === true) {
+        echo "<script>location.replace('./bouquet_list.php')</script>";
 
-    } else {
-      $invalid = $status;
-    }
+      } else {
+        $invalid = $status;
+      }
   }
   }
-
-
 }
+
+
 ?>
 
 
