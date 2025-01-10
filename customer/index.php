@@ -68,15 +68,14 @@ if(have_admin($mysqli)){
             </div>
           </div>
           <div class="col-lg-4 order-lg-1">
-            <span class="section-subtitle" data-aos="fade-up">Welcome</span>
+            <span class="section-subtitle" data-aos="fade-up">Welcome to <span style='color:var(--heading-color); font-size:20px;'>Floral</span></span>
             <h1 class="mb-4" data-aos="fade-up">
               Excepteur sint occaecat cupidatat non proident
             </h1>
             <p data-aos="fade-up">
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts. Separated they
-              live in Bookmarksgrove right at the coast of the Semantics, a large
-              language oc
+            Whether you're looking to celebrate a special moment, express heartfelt emotions, or simply add a touch of green to your space, we’ve got you covered.
+
+Explore our curated collection of exquisite handcrafted bouquets, lush indoor plants, and thoughtful gift arrangements. Each piece is designed to bring beauty, joy, and freshness into your life.
             </p>
             <p class="mt-5 d-flex justify-content-between " data-aos="fade-up">
               <a href="plants.php" class="btn btn-get-started">Buy Plants</a>

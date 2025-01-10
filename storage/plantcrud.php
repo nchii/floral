@@ -20,13 +20,13 @@ function get_plant_details($mysqli,$id){
   $plant = $mysqli->query($sql);
   return $plant->fetch_assoc(); 
 }
-// function get_user_pag_count($mysqli){
-//   $sql = "SELECT COUNT(`id`) AS total FROM `plant`";
-//   $count = $mysqli->query($sql);
-//   $total = $count->fetch_assoc();
-//   $page = ceil($total['total'] / 5) ;
-//   return $page;
-// }
+function get_user_pag_count($mysqli){
+  $sql = "SELECT COUNT(`id`) AS total FROM `plant`";
+  $count = $mysqli->query($sql);
+  $total = $count->fetch_assoc();
+  $page = ceil($total['total'] / 5) ;
+  return $page;
+}
 function get_user_filter($mysqli,$key){
   $sql = "SELECT * FROM `plant` WHERE `name` LIKE '%$key%'";
   return $mysqli->query($sql);

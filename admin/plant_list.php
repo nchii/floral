@@ -5,8 +5,13 @@
 
 </div>
 </header>
+
 <?php
 $currentPage = 0;
+if (isset($_GET["pageNo"])) {
+    $currentPage = (int) $_GET["pageNo"];
+}
+$pagTotal = get_user_pag_count($mysqli);
 ?>
 <main class="main">
   
@@ -79,6 +84,9 @@ $currentPage = 0;
                       ?>
                     </tbody>
                   </table>
+                  <?php if(!isset($_POST['search'])) { ?>
+                    <?php require_once("../layout/pagination.php"); ?>
+                <?php } ?>
                 </div>
               </div>
             </div>
@@ -91,7 +99,7 @@ $currentPage = 0;
     </div>
 
   </section><!-- /Pricing Section -->
-
+  
   
 
 </main>
