@@ -5,7 +5,12 @@
     <section class="section">
     <div class="container">
         <div class="card">
-
+        <div class="alert alert-success">Your order is successful!</div><br>
+        <div class="card-body">
+        <div class="col-md-7">
+            <?php ?>
+ 
+        </div>
         </div>
     </div>
     </section>

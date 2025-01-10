@@ -30,7 +30,7 @@ if(isset($_GET['dec'])){
 if(isset($_POST['confirm_order'])){
   save_order($mysqli,$cart_list,$user['id']);
   $_SESSION['cart'] = [];
-  echo "<script>location.replace('./invoice.php');</script>";
+  echo "<script>location.replace('./invoice.php?id=');</script>";
 }
 ?>
 
