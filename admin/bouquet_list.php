@@ -2,7 +2,15 @@
 <?php require_once('./layout/nav.php') ?>
 <?php require_once('../storage/db.php') ?>
 <?php require_once('../storage/bouquet_crud.php') ?>
+<?php $currentPage = 0;
+if (isset($_GET["pageNo"])) {
+    $currentPage = (int) $_GET["pageNo"];
+}
 
+$pagTotal = get_bouquet_pag_count($mysqli);
+if (isset($_GET['lest'])) {
+    $currentPage = ($pagTotal * 5) - 5;
+} ?>
 
   <main class="main">
 
@@ -76,6 +84,11 @@
                         ?>
                       </tbody>
                     </table>
+                    <?php if (!isset($_POST['search'])) {
+              require_once("../layout/pagination.php");
+          } elseif (isset($_POST['search']) && $_POST['search'] == "") {
+              require_once("../layout/pagination.php");
+          } ?>
                   </div>
                 </div>
               </div>

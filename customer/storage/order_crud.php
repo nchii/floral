@@ -19,6 +19,7 @@ function save_order($mysqli,$cart_list,$userId){
                     $mysqli->query($sql2);
                 }
                 $mysqli->commit();
+                return $lastId;
             }else {
                 $mysqli->rollback();
                 echo "Error inserting into plant: " . $mysqli->error;
@@ -30,4 +31,10 @@ function save_order($mysqli,$cart_list,$userId){
         die();
     }
     
+}
+
+function get_order_with_id($mysqli,$id){
+    $sql= "SELECT * FROM `invoice` WHERE id=$id";
+    $order=$mysqli->query($sql);
+    return $order->fetch_assoc();
 }

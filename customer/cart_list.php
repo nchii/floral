@@ -28,9 +28,9 @@ if(isset($_GET['dec'])){
   echo "<script>location.replace('./cart_list.php');</script>";
 }
 if(isset($_POST['confirm_order'])){
-  save_order($mysqli,$cart_list,$user['id']);
+  $order_id=save_order($mysqli,$cart_list,$user['id']);
   $_SESSION['cart'] = [];
-  echo "<script>location.replace('./invoice.php?id=');</script>";
+  echo "<script>location.replace('./invoice.php?id=$order_id');</script>";
 }
 ?>
 

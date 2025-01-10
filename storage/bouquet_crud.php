@@ -40,5 +40,12 @@ function delete_bouquet($mysqli, $id){
   }
 }
 
-
+function get_bouquet_pag_count($mysqli)
+  {
+      $sql = "SELECT COUNT(`id`) AS total FROM `bouquet`";
+      $count = $mysqli->query($sql);
+      $total = $count->fetch_assoc();
+      $page = ceil($total['total'] / 5) ;
+      return $page;
+  }
 
