@@ -69,7 +69,7 @@ $currentPage = 0;
                               src="data:image/' . $type . ';base64,<?= $plant['img'] ?>">
                           </td>
                           <td>
-                          <a class="btn btn-sm btn-primary" href="./add_plant.php?plant_id=<?= $plant["id"] ?>"><i class="bi bi-pen"></i></a>
+                          <a class="btn btn-sm btn-primary" href="./add_plant.php?id=<?= $plant['id'] ?>"><i class="bi bi-pen"></i></a>
                             <button class="btn btn-sm btn-danger deleteSelect" data-val="<?= $plant['id'] ?>"
                               data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
                           </td>

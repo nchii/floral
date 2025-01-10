@@ -108,7 +108,7 @@ if (isset($_POST['email'])) {
                 <div data-mdb-input-init class="form-outline mb-4 form-floating">
                   <input type="email" name="email" class="form-control " value="<?= $email ?>"/>
                   <label class="form-label" for="form2Example18">Email address</label>
-                  <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
+                  <div class="validation-message" style="font-size:12px; color:red; line-height:25px; height:25px">
                     <?= $email_err ?>
                   </div>
                 </div>
@@ -116,7 +116,7 @@ if (isset($_POST['email'])) {
                 <div data-mdb-input-init class="form-outline mb-2 form-floating">
                     <input type="password" id="password" name="password" class="form-control " value="<?= $password?>" />
                     <label class="form-label" for="password">Password</label>
-                    <div class="validation-message" style="font-size:12px; line-height:25px; height:25px">
+                    <div class="validation-message" style="font-size:12px; color:red;line-height:25px; height:25px">
                       <?= $password_err ?>
                     </div>
                 </div>

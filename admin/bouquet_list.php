@@ -4,15 +4,6 @@
 <?php require_once('../storage/bouquet_crud.php') ?>
 
 
-<?php
-      if(isset($_POST['search'])){
-        $bouquet_list = get_user_filter($mysqli,$_POST['search']);
-      }
-      
-?>
-      
-  
-
   <main class="main">
 
     <section id="pricing" class="pricing section light-background">
@@ -20,6 +11,15 @@
 
       <div class="container">
         <div class="card">
+          <?php 
+            if(isset($_GET['deleteId'])){
+              if(delete_bouquet($mysqli,$_GET['deleteId'])){ ?>
+                <div class="alert alert-warning">Bouquet is deleted!</div>
+              <?php }else{ ?>
+                <div class="alert alert-danger">Can't delete Bouquet!</div>
+              <?php }
+          } ?> 
+
 
         <div class="row gy-2">
 
@@ -48,7 +48,12 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $i=1; $bouquet_list = get_all_bouquets($mysqli); ?>
+                        <?php $i=1; $bouquet_list = get_all_bouquets($mysqli); 
+                         if(isset($_POST['search'])){
+                          $bouquet_list = get_user_filter($mysqli,$_POST['search']);
+                        }
+                        
+                        ?>
                         <?php while ($bouquet = $bouquet_list->fetch_assoc()) { ?>
 
                           <tr>
@@ -60,9 +65,9 @@
                               <img style="width: 70px;height: 70px;border-radius: 50%;" src="data:image/' . $type . ';base64,<?= $bouquet['img'] ?>">
                             </td>
                             <th>
-                              <button class="btn btn-sm btn-primary"><i class="fa fa-pen"></i></button>
-                              <button class="btn btn-sm btn-danger deleteSelect" data-value="<?= "" ?>"
-                                data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa fa-trash"></i></button>
+                            <a class="btn btn-sm btn-primary" href="./add_bouquet.php?id=<?= $bouquet['id'] ?>"><i class="bi bi-pen"></i></a>
+                            <button class="btn btn-sm btn-danger deleteSelect" data-val="<?= $bouquet['id'] ?>"
+                            data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
                             </th>
                           </tr>
                           </tr>

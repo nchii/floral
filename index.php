@@ -15,12 +15,6 @@ if(have_admin($mysqli)){
 ?>
   <?php require_once('layout/nav.php') ?>
 
-<?php
-      if(isset($_POST['search'])){
-        $bouquet_list = get_user_filter($mysqli,$_POST['search']);
-      }
-      
-?>
 
 
       
@@ -103,16 +97,17 @@ Explore our curated collection of exquisite handcrafted bouquets, lush indoor pl
       <!-- Pricing Section -->
     <section id="pricing" class="pricing section light-background">
 
-<!-- Section Title -->
-<div class="container section-title" data-aos="fade-up">
-  <h2>Bouquets</h2>
-</div><!-- End Section Title -->
+
 
 <div class="container">
 
   <div class="row gy-4">
     <?php $i = 1;
-    $bouquet_list = get_all_bouquets($mysqli); ?>
+    $bouquet_list = get_all_bouquets($mysqli);
+    if(isset($_POST['search'])){
+      $bouquet_list = get_all_bouquets_filter($mysqli,$_POST['search']);
+    }
+    ?>
     <?php while ($bouquet = $bouquet_list->fetch_assoc()) { ?>
       <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
         <div class="pricing-item">
@@ -134,16 +129,14 @@ Explore our curated collection of exquisite handcrafted bouquets, lush indoor pl
     <!-- Pricing Section -->
     <section id="pricing" class="pricing section light-background">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Plants</h2>
-      </div><!-- End Section Title -->
-
       <div class="container">
 
         <div class="row gy-4">
           <?php $i = 1;
           $plant_list = get_all_plants($mysqli); 
+          if(isset($_POST['search'])){
+            $plant_list = get_all_plants_filter($mysqli,$_POST['search']);
+          }
           ?>
           <?php while ($plant = $plant_list->fetch_assoc()) { ?>
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
