@@ -16,5 +16,6 @@ function get_bouquet_details($mysqli,$id){
     return $bouquet->fetch_assoc(); 
   }
 
-
+  
+  
 

@@ -5,14 +5,15 @@
 
 </div>
 </header>
-
-<?php
-$currentPage = 0;
+<?php $currentPage = 0;
 if (isset($_GET["pageNo"])) {
     $currentPage = (int) $_GET["pageNo"];
 }
-$pagTotal = get_user_pag_count($mysqli);
-?>
+
+$pagTotal = get_plant_pag_count($mysqli);
+if (isset($_GET['lest'])) {
+    $currentPage = ($pagTotal * 5) - 5;
+} ?>
 <main class="main">
   
   <section id="pricing" class="pricing section light-background">
@@ -25,13 +26,12 @@ $pagTotal = get_user_pag_count($mysqli);
         <div class="col-lg-12 col-md-6" data-aos="fade-up" data-aos-delay="100">
           <div class="pricing">
             <div class="plant-item m-5">
-              <div class="d-flex justify-content-end align-items-center my-3">
+              <div class="d-flex justify-content-between">
+              <h3>Plant List</h3>
                 <a href="add_plant.php" class="btn-buy"
                 style="padding: 10px 15px; background-color: var(--accent-color); border-radius: 18px; color:white;">Add New Plant</a>
               </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <h3>Item List</h3>
-              </div>
+          
               <?php 
                 if(isset($_GET['deleteId'])){
                   if(delete_plant($mysqli,$_GET['deleteId'])){ ?>
@@ -42,7 +42,7 @@ $pagTotal = get_user_pag_count($mysqli);
                 } ?>
               <div class="card m-3 border-0">
                 <div class="card-body">
-                  <table class="table table-bordered table-striped mt-3">
+                  <table class="table table-bordered table-striped">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -57,6 +57,7 @@ $pagTotal = get_user_pag_count($mysqli);
                   
                       <?php $i = 1;
                       $plant_list = get_all_plants($mysqli);
+                      $plant_list = get_all_plant_id($mysqli,$currentPage);
                       if(isset($_POST['search'])){
                         $plant_list = get_all_plants_filter($mysqli,$_POST['search']);
                       }
@@ -84,9 +85,11 @@ $pagTotal = get_user_pag_count($mysqli);
                       ?>
                     </tbody>
                   </table>
-                  <?php if(!isset($_POST['search'])) { ?>
-                    <?php require_once("../layout/pagination.php"); ?>
-                <?php } ?>
+                  <?php if (!isset($_POST['search'])) {
+                        require_once("../layout/pagination.php");
+                    } elseif (isset($_POST['search']) && $_POST['search'] == "") {
+                        require_once("../layout/pagination.php");
+                    } ?>
                 </div>
               </div>
             </div>

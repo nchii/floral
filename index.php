@@ -103,7 +103,8 @@ Explore our curated collection of exquisite handcrafted bouquets, lush indoor pl
 
   <div class="row gy-4">
     <?php $i = 1;
-    $bouquet_list = get_all_bouquets($mysqli);
+    // $bouquet_list = get_all_bouquets($mysqli);
+    $bouquet_list = get_new_item($mysqli);
     if(isset($_POST['search'])){
       $bouquet_list = get_all_bouquets_filter($mysqli,$_POST['search']);
     }
@@ -115,13 +116,14 @@ Explore our curated collection of exquisite handcrafted bouquets, lush indoor pl
           <img src="data:image/' . $type . ';base64,<?= $bouquet['img'] ?>" alt="">
           <h5><?= $bouquet['price'] ?><span> mmk</span></h5>
           <div class="btn-wrap">
-            <a href="bouquetdetails.php?id=<?= $bouquet['id'] ?>" class="btn-buy">Buy Now</a>
+            <a href="login.php" class="btn-buy">Buy Now</a>
           </div>
         </div>
       </div>
       <?php $i++;
     } ?><!-- End Pricing Item -->
   </div>
+  <button><a href="bouquets.php">more</a></button>
 
 </section><!-- /Pricing Section -->
         
@@ -145,13 +147,12 @@ Explore our curated collection of exquisite handcrafted bouquets, lush indoor pl
                 <img src="data:image/' . $type . ';base64,<?= $plant['img'] ?>" alt="">
                 <h5><?= $plant['price'] ?><span> mmk</span></h5>
                 <div class="btn-wrap">
-                  <a href="plantdetails.php?id=<?= $plant['id'] ?>" class="btn-buy">Buy Now</a>
+                  <a href="login.php" class="btn-buy">Buy Now</a>
                 </div>
               </div>
             </div>
             <?php $i++;
           } ?><!-- End Pricing Item -->
-
 
         </div>
 

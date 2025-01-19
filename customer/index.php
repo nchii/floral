@@ -70,7 +70,7 @@ if(have_admin($mysqli)){
           <div class="col-lg-4 order-lg-1">
             <span class="section-subtitle" data-aos="fade-up">Welcome to <span style='color:var(--heading-color); font-size:20px;'>Floral</span></span>
             <h1 class="mb-4" data-aos="fade-up">
-              Excepteur sint occaecat cupidatat non proident
+            We believe in the magic of nature
             </h1>
             <p data-aos="fade-up">
             Whether you're looking to celebrate a special moment, express heartfelt emotions, or simply add a touch of green to your space, we’ve got you covered.

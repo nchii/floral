@@ -3,12 +3,18 @@
 function save_plant($mysqli,$plantName,$price,$description,$plantImg,$size,){
   $sql="INSERT INTO `plant`(`name`,`price`,`description`,`img`,`size`) VALUES ('$plantName',$price,'$description','$plantImg','$size') ";
   return $mysqli->query($sql);
+} 
+
+function get_all_plant_id($mysqli,$start){
+  $sql="SELECT * FROM `plant` order by `id` limit 5 offset $start";
+  return $mysqli->query($sql); 
 }
 
 function get_all_plants($mysqli){
-  $sql="SELECT * FROM `plant`";
+  $sql="SELECT * FROM `plant` ";
   return $mysqli->query($sql); 
 }
+
 
 function get_all_plants_filter($mysqli,$search){
   $sql="SELECT * FROM `plant` where `name` like '%$search%'";
@@ -46,9 +52,11 @@ function update_plant($mysqli,$plantName,$price,$description,$plantImg,$size,$id
   return $mysqli->query($sql);
 }
 
-function get_plant_id($mysqli, $id)
-{
-    $sql = "SELECT * FROM `plant` WHERE `id`=$id";
-    $resule = $mysqli->query($sql);
-    return $resule->fetch_assoc();
-}
+function get_plant_pag_count($mysqli)
+  {
+      $sql = "SELECT COUNT(`id`) AS total FROM `plant`";
+      $count = $mysqli->query($sql);
+      $total = $count->fetch_assoc();
+      $page = ceil($total['total'] / 5) ;
+      return $page;
+  }

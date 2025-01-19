@@ -7,7 +7,7 @@ function save_order($mysqli,$cart_list,$userId){
             $total = $total + $item['quantity']*$item['price'];
         }
         $ord_no= 'ORD-'.uniqid();
-        $sql = "INSERT INTO `invoice`(`order_no`,`user_id`,`total_amount`,`date`) VALUES ( '$ord_no',$userId,$total,date(now())";
+        $sql = "INSERT INTO `invoice`(`order_no`,`user_id`,`total_amount`,`date`) VALUES ( '$ord_no',$userId,$total,date(now()))";
             if ($mysqli->query($sql)) {
                 $lastId = $mysqli->insert_id;
                 foreach ($cart_list as $item) { 
@@ -19,6 +19,7 @@ function save_order($mysqli,$cart_list,$userId){
                     $mysqli->query($sql2);
                 }
                 $mysqli->commit();
+                return $lastId;
             }else {
                 $mysqli->rollback();
                 echo "Error inserting into plant: " . $mysqli->error;
@@ -29,4 +30,11 @@ function save_order($mysqli,$cart_list,$userId){
         echo "Transaction failed: " . $e->getMessage();
         die();
     }
+    
+}
+
+function get_order_with_id($mysqli,$id){
+    $sql= "SELECT * FROM `invoice` WHERE id=$id";
+    $order=$mysqli->query($sql);
+    return $order->fetch_assoc();
 }

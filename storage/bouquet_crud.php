@@ -10,9 +10,18 @@ function get_all_bouquets($mysqli){
   $sql="SELECT * FROM `bouquet`";
   return $mysqli->query($sql);
 }
+function get_all_bouquet_list($mysqli,$start){
+  $sql="SELECT * FROM `bouquet` ORDER BY `id` LIMIT 5 OFFSET $start";
+  return $mysqli->query($sql);
+}
+
+function get_new_item($mysqli){
+  $sql ="SELECT * FROM `bouquet` ORDER BY `id`  DESC limit 8";
+  return $mysqli->query($sql);
+}
 
 function get_all_bouquets_filter($mysqli,$search){
-  $sql="SELECT * FROM `bouquet` where `name` like '%$search%'";
+  $sql="SELECT * FROM `bouquet` WHERE `name` LIKE '%$search%'";
   return $mysqli->query($sql); 
 }
 
@@ -41,5 +50,12 @@ function delete_bouquet($mysqli, $id){
   }
 }
 
-
+function get_bouquet_pag_count($mysqli)
+  {
+      $sql = "SELECT COUNT(`id`) AS total FROM `bouquet`";
+      $count = $mysqli->query($sql);
+      $total = $count->fetch_assoc();
+      $page = ceil($total['total'] / 5) ;
+      return $page;
+  }
 

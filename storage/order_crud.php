@@ -6,7 +6,11 @@ function get_all_order($mysqli){
 }
 
 function get_order_detail($mysqli){
-    $sql="select `invoice`.id,`invoice`.ord_no,`invoice`.total_amount,`invoice`.date,`user`.name from `invoice` inner join 
- `user` on `invoice`.user_id=`user`.id";
+$sql="SELECT `invoice`.order_no,`invoice`.total_amount,`invoice`.date,`user`.name from `invoice` inner join `user` on `invoice`.user_id=`user`.id;";
+    return $mysqli->query($sql);
+}
+
+function get_order_with_id($mysqli,$id){
+    $sql= "SELECT * FROM `invoice` WHERE id=$id";
     return $mysqli->query($sql);
 }
