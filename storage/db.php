@@ -88,20 +88,6 @@
             return false;
         }*/
 
-        // $sql = "CREATE TABLE `cart` (
-        //     id INT AUTO_INCREMENT PRIMARY KEY,
-        //     `user_id` INT NOT NULL,
-        //     `plant_id` INT NOT NULL,          
-  
-        //      `quantity` INT NOT NULL,
-        //     `added_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        //     FOREIGN KEY (`plant_id`) REFERENCES `plant`(`id`),
-        
-        //     FOREIGN KEY (`user_id`) REFERENCES `user`(`id`))";
-       
-        // if(!$mysqli->query($sql)){
-        //         return false;
-        //     }
 
 
 

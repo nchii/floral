@@ -106,7 +106,7 @@ if (isset($_POST['email'])) {
                     class="sitename">Floral</span></h3>
                   
                 <div data-mdb-input-init class="form-outline mb-4 form-floating">
-                  <input type="email" name="email" class="form-control " value="<?= $email ?>"/>
+                  <input type="text" name="email" class="form-control " value="<?= $email ?>"/>
                   <label class="form-label" for="form2Example18">Email address</label>
                   <div class="validation-message" style="font-size:12px; color:red; line-height:25px; height:25px">
                     <?= $email_err ?>
@@ -133,7 +133,7 @@ if (isset($_POST['email'])) {
                     style="background-color: var(--accent-color);color: var(--contrast-color);border-radius: 30px;padding: 8px 30px;border: 2px solid transparent;transition: 0.3s all ease-in-out;font-size: 14px;">Log
                     in</button>
                 </div>
-                <p>Don't have an account? <a href="#!" style="color:var(--accent-color)">Register Here</a></p>
+                <p>Don't have an account? <a href="register.php" style="color:var(--accent-color)">Register Here</a></p>
 
               </form>
 

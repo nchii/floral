@@ -34,10 +34,15 @@ $currentPage = 0;
                         <th>Customer Name</th>
                         <th>Total Amount</th>
                         <th>Date</th>
+                        <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php $i = 1;
+
+                      <?php
+                      // number_format($)
+                  
+                      $i = 1;
                       $order_list = get_order_detail($mysqli);
                       ?>
                       <?php while ($order = $order_list->fetch_assoc()) { ?>
@@ -45,8 +50,14 @@ $currentPage = 0;
                           <td><?= $i ?></td>
                           <td><?= $order['order_no']?></td>
                           <td><?= $order['name']?></td>
-                          <td><?= $order['total_amount'] ?> mmk</td>
+                          <td class="text-end"><?= number_format($order['total_amount'],2) ?> </td>
                             <td><?= date('Y-m-d', strtotime($order['date'])) ?></td>
+                          <td>
+                            <button class="btn btn-secondary btn-sm">Prepare</button>
+                            <button class="btn btn-primary btn-sm">Delivered</button>
+                            <button class="btn btn-success btn-sm">Complete</button>
+                            <button class="btn btn-warning btn-sm">View</button>
+                          </td>
                         </tr>
                         <?php $i++;
                       }

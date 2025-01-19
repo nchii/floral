@@ -6,7 +6,7 @@
                   <a class="page-link"><?= $i + 1 ?></a>
                 </li>
                 <?php } else { ?>
-                  <li class="page-item">
+                <li class="page-item">
                   <a class="page-link" href="?pageNo=<?= $i * 5 ?>"><?= $i + 1 ?></a>
                 </li>
               <?php }

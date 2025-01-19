@@ -27,7 +27,7 @@
                 array_push($cart_list, ['type'=>"plant",'quantity'=>1,'id'=>$cart['id'],'name'=>$cart['name'],'price'=>$cart['price'],'size'=>$cart['size'],'description'=>$cart['description'],'img'=>$cart['img']]);
               }
               $_SESSION['cart'] = $cart_list;
-              echo "<script>location.replace('./plants.php');</script>";
+              echo "<script>location.replace('./cart_list.php');</script>";
             }
           }
         ?>

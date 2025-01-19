@@ -20,5 +20,10 @@ function update_plant($mysqli,$plantName,$price,$description,$plantImg,$size,$id
     $sql = "UPDATE  `plant` SET `name`='$plantName',`price`='$price', `description`='$description', `img` = '$plantImg',`size`='$size', WHERE `id`= $id";
     return $mysqli->query($sql);
 }
-
+function get_plant_id($mysqli, $id)
+{
+    $sql = "SELECT * FROM `plant` WHERE `id`=$id";
+    $resule = $mysqli->query($sql);
+    return $resule->fetch_assoc();
+}
 

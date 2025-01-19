@@ -87,7 +87,7 @@ if (isset($_POST['plantName'])) {
 
   if (!$invalid) {
     if(isset($_GET['id'])){
-      if(update_plant($mysqli,$plantName,$price,$description,$plantImg,$size,$id)){
+      if(update_plant($mysqli,$plantName,$price,$description,$size,$data,$id)){
         header("Location:plant_list.php");
       }else{
         $error = true;

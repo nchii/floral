@@ -103,7 +103,8 @@ Explore our curated collection of exquisite handcrafted bouquets, lush indoor pl
 
   <div class="row gy-4">
     <?php $i = 1;
-    $bouquet_list = get_all_bouquets($mysqli);
+    // $bouquet_list = get_all_bouquets($mysqli);
+    $bouquet_list = get_new_item($mysqli);
     if(isset($_POST['search'])){
       $bouquet_list = get_all_bouquets_filter($mysqli,$_POST['search']);
     }
@@ -122,6 +123,7 @@ Explore our curated collection of exquisite handcrafted bouquets, lush indoor pl
       <?php $i++;
     } ?><!-- End Pricing Item -->
   </div>
+  <button><a href="bouquets.php">more</a></button>
 
 </section><!-- /Pricing Section -->
         
@@ -151,7 +153,6 @@ Explore our curated collection of exquisite handcrafted bouquets, lush indoor pl
             </div>
             <?php $i++;
           } ?><!-- End Pricing Item -->
-
 
         </div>
 

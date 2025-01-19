@@ -34,18 +34,15 @@ if (isset($_GET['lest'])) {
           <div class="col-lg-12 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="pricing">
               <div class="bouquet-item m-5">
-              <div class="d-flex justify-content-end align-items-center my-3">
+              <div class="d-flex justify-content-between">
+              <h3>Bouquet List</h3>
                 <a href="add_bouquet.php" class="btn-buy"
                   style="padding: 10px 15px; background-color: var(--accent-color); border-radius: 18px; color:white;">Add New Bouquet</a>
-              </div>
-
-              <div class="d-flex justify-content-start align-items-center my-3">
-              <h3>Bouquet List</h3>
               </div>
                 <div class="card m-3 border-0">
                   <div class="card-body">
                   
-                    <table class="table table-bordered table-striped mt-3">
+                    <table class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>No</th>
@@ -56,7 +53,8 @@ if (isset($_GET['lest'])) {
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $i=1; $bouquet_list = get_all_bouquets($mysqli); 
+                        <?php $i=1; $bouquet_list = get_all_bouquets($mysqli);
+                        $bouquet_list = get_all_bouquet_list($mysqli,$currentPage); 
                          if(isset($_POST['search'])){
                           $bouquet_list = get_user_filter($mysqli,$_POST['search']);
                         }

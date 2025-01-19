@@ -67,7 +67,10 @@ if(isset($_POST['confirm_order'])){
                     <tbody>
 
                       <?php $i = 1;
+                      $subtotal = 0;
                       foreach ($cart_list as $key => $plant) { ?>
+                      <?php $total = ($plant['price']) * ($plant['quantity']); ?>
+                      <?php $subtotal = $total + $subtotal; ?>
                         <tr>
                           <td><?= $i ?></td>
                           <td><?= $plant['name'] ?></td>
@@ -76,7 +79,7 @@ if(isset($_POST['confirm_order'])){
                               src="data:image/' . $type . ';base64,<?= $plant['img'] ?>">
                           </td>
                           <td><?= $plant['quantity'] ?></td>
-                          <td><?= ($plant['price']) * ($plant['quantity']) ?> mmk</td>
+                          <td class="text-end"><?= number_format($total,2) ?> </td>
 
                           <th class="text-center">
                             <a class="btn btn-sm btn-danger mr-3" href="?dec=<?= $i ?>"  >&nbsp;-&nbsp;</button>
@@ -84,11 +87,21 @@ if(isset($_POST['confirm_order'])){
                           </th>
                         </tr>
                         <?php $i++;
-                      }
-                      ?>
+                      }?>      
                     </tbody>
+                    <tfoot>
+                      <tr>
+                      <tr>
+                          <td colspan="2" style="text-align: right; font-weight: bold;font-size:17px;">Total:</td>
+                          <td></td>
+                          <td></td>
+                          <td style="text-align: right; font-weight: bold;font-size:17px;" class="text-end"><?= number_format($subtotal,2) ?></td>
+                      </tr>
+                      </tr>
+                    </tfoot>
                   </table>
                 </div>
+                
                 <form method="post">
                   <div class="d-flex justify-content-end align-items-center m-3">
                     <button type="submit" name="confirm_order" class="btn-buy"
@@ -96,6 +109,7 @@ if(isset($_POST['confirm_order'])){
                       Order</button>
                   </div>
                 </form>
+                
               </div>
             </div>
           </div>
