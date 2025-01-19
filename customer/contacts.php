@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php require_once('layout/header.php') ?>
+<?php require_once('layout/nav.php') ?>
     <title>Contact Us | Flower and Plant Shop</title>
     <style>
         body {
@@ -21,7 +18,7 @@
         }
         h1 {
             text-align: center;
-            color: #4CAF50;
+            color: var(--accent-color);
         }
         .contact-details {
             margin-bottom: 20px;
@@ -71,7 +68,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Contact Us</h1>
+        <h1 >Contact Us</h1>
 
         <div class="contact-details">
             <p><strong>📍 Address:</strong> 123 Green Street, Blossom Town, FL 45678</p>
@@ -98,13 +95,6 @@
 
                 <button type="submit">Submit</button>
             </form>
-        </div>
-
-        <div class="social-links">
-            <h3>Follow Us</h3>
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Twitter</a>
         </div>
     </div>
 </body>

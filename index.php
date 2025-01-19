@@ -115,7 +115,7 @@ Explore our curated collection of exquisite handcrafted bouquets, lush indoor pl
           <img src="data:image/' . $type . ';base64,<?= $bouquet['img'] ?>" alt="">
           <h5><?= $bouquet['price'] ?><span> mmk</span></h5>
           <div class="btn-wrap">
-            <a href="bouquetdetails.php?id=<?= $bouquet['id'] ?>" class="btn-buy">Buy Now</a>
+            <a href="login.php" class="btn-buy">Buy Now</a>
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@ Explore our curated collection of exquisite handcrafted bouquets, lush indoor pl
                 <img src="data:image/' . $type . ';base64,<?= $plant['img'] ?>" alt="">
                 <h5><?= $plant['price'] ?><span> mmk</span></h5>
                 <div class="btn-wrap">
-                  <a href="plantdetails.php?id=<?= $plant['id'] ?>" class="btn-buy">Buy Now</a>
+                  <a href="login.php" class="btn-buy">Buy Now</a>
                 </div>
               </div>
             </div>

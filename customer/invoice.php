@@ -20,7 +20,7 @@
                   </tr>
                   <tr class="mb-5">
                     <td><span style="color:var(--accent-color)">Date: </span></td>
-                    <td><?= $invoice['date']?></td>
+                    <td><?= date('Y-m-d', strtotime($invoice['date'])) ?></td>
                   </tr>
                   <tr class="mb-5">
                     <td style="vertical-align: top; text-align: left;"><span style="color:var(--accent-color);">Total Amount:  </span></td>
