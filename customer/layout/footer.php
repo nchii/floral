@@ -10,9 +10,9 @@
             There live the blind texts. Separated they live in Bookmarksgrove
             right at the coast of the Semantics, a large language ocean.
           </p>
-          <p class="mb-0">
+          <!-- <p class="mb-0">
             <a href="#" class="btn-learn-more">Learn more</a>
-          </p>
+          </p> -->
         </div>
       </div>   
     </div>   

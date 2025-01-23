@@ -25,17 +25,17 @@
             return false;
         }
     
-        /*$sql = "CREATE TABLE IF NOT EXISTS `flower`(`flower_id` INT AUTO_INCREMENT , `flower_name` VARCHAR(45) NOT NULL ,`color` VARCHAR(45) NOT NULL,PRIMARY KEY(`flower_id`))";
+        $sql = "CREATE TABLE IF NOT EXISTS `flower`(`id` INT AUTO_INCREMENT , `name` VARCHAR(100) NOT NULL ,`color` VARCHAR(100) NOT NULL,`price` INT NOT NULL,`qty` INT NOT NULL,`img` LONGTEXT NOT NULL,PRIMARY KEY(`id`))";
         if(!$mysqli->query($sql)){
             return false;
-        }*/
+        }
     
         $sql = "CREATE TABLE IF NOT EXISTS `bouquet`(`id` INT AUTO_INCREMENT,`name` VARCHAR(45) NOT NULL, `description` TEXT NOT NULL,`price` INT NOT NULL,`img` LONGTEXT NOT NULL,PRIMARY KEY(`id`))";
         if(!$mysqli->query($sql)){
             return false;
         }
         
-        $sql = "CREATE TABLE IF NOT EXISTS `bouquet_items`(`id` INT AUTO_INCREMENT ,`bouquet_id` INT NOT NULL, `flower` VARCHAR(45) NOT NULL ,`qty` INT NOT NULL,PRIMARY KEY(`id`),FOREIGN KEY (`bouquet_id`) REFERENCES `bouquet`(`id`))";
+        $sql = "CREATE TABLE IF NOT EXISTS `bouquet_items`(`id` INT AUTO_INCREMENT ,`bouquet_id` INT NOT NULL ,`flower_id` INT NOT NULL ,`qty` INT NOT NULL,PRIMARY KEY(`id`),FOREIGN KEY (`bouquet_id`) REFERENCES `bouquet`(`id`),FOREIGN KEY (`flower_id`) REFERENCES `flower`(`id`))";
         if(!$mysqli->query($sql)){
             return false;
         }

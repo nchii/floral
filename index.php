@@ -3,7 +3,7 @@
 <?php require_once("storage/usercrud.php") ?>
 <?php require_once("storage/plantcrud.php") ?>
 <?php require_once("storage/bouquet_crud.php") ?>
-<?php require_once('storage/cart_crud.php')?>
+<?php require_once('storage/cart_crud.php') ?>
 
 <?php 
 
@@ -20,6 +20,7 @@ if(have_admin($mysqli)){
       
   </div>
   </header>
+
 
   <main class="main">
 
@@ -123,7 +124,7 @@ Explore our curated collection of exquisite handcrafted bouquets, lush indoor pl
       <?php $i++;
     } ?><!-- End Pricing Item -->
   </div>
-  <button><a href="bouquets.php">more</a></button>
+
 
 </section><!-- /Pricing Section -->
         

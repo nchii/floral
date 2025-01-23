@@ -3,7 +3,7 @@
     <li><a href="index.php">Home</a></li>
     <li><a href="plants.php">Plants</a></li>
     <li><a href="bouquets.php">Bouquets</a></li>
-    <li><a href="contacts.php">Contact</a></li>
+    <li><a href="customize.php">Customize</a></li>
     <li><a href="cart_list.php">
       <span class="position-relative">
         &#x1F6D2;

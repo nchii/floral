@@ -14,7 +14,7 @@ function get_bouquet_details($mysqli,$id){
     $sql="SELECT * FROM `bouquet` WHERE `id`=$id";
     $bouquet = $mysqli->query($sql);
     return $bouquet->fetch_assoc(); 
-  }
+}
 
   
   

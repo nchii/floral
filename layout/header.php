@@ -29,7 +29,9 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
+
   <link href="assets/css/main.css" rel="stylesheet">
+  
 
   <!-- =======================================================
   * Template Name: Active

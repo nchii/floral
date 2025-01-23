@@ -13,7 +13,7 @@
 
       <div class="row gy-2">
 
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
           <div class="pricing-item">
             <img src="assets/img/admbouquet.png" alt="">
             <div class="btn-wrap">
@@ -22,7 +22,7 @@
           </div>
         </div><!-- End Pricing Item -->
 
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
           <div class="pricing-item">
             <img src="assets/img/admplant.png" alt="">
             <div class="btn-wrap">
@@ -31,7 +31,16 @@
           </div>
         </div><!-- End Pricing Item -->
 
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="pricing-item">
+            <img src="assets/img/admplant.png" alt="">
+            <div class="btn-wrap">
+              <a href="bouquet_list.php" class="btn-buy">Bouquet Items</a>
+            </div>
+          </div>
+        </div><!-- End Pricing Item -->
+
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
           <div class="pricing-item">
             <img src="assets/img/order.png" alt="">
             <div class="btn-wrap">
