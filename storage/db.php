@@ -30,7 +30,7 @@
             return false;
         }
     
-        $sql = "CREATE TABLE IF NOT EXISTS `bouquet`(`id` INT AUTO_INCREMENT,`name` VARCHAR(45) NOT NULL, `description` TEXT NOT NULL,`price` INT NOT NULL,`img` LONGTEXT NOT NULL,PRIMARY KEY(`id`))";
+        $sql = "CREATE TABLE IF NOT EXISTS `bouquet`(`id` INT AUTO_INCREMENT,`name` VARCHAR(45) NOT NULL, `description` TEXT NOT NULL,`price` INT NOT NULL,`img` VARCHAR(225) NOT NULL,PRIMARY KEY(`id`))";
         if(!$mysqli->query($sql)){
             return false;
         }
@@ -46,7 +46,7 @@
             return false;
         }*/
     
-        $sql = "CREATE TABLE IF NOT EXISTS `plant`(`id` INT AUTO_INCREMENT,`name` VARCHAR(45) NOT NULL, `price` INT NOT NULL,`description` VARCHAR(225) NOT NULL,`img` LONGTEXT NOT NULL,`size` VARCHAR(45) NOT NULL ,PRIMARY KEY(`id`))";
+        $sql = "CREATE TABLE IF NOT EXISTS `plant`(`id` INT AUTO_INCREMENT,`name` VARCHAR(45) NOT NULL, `price` INT NOT NULL,`description` VARCHAR(225) NOT NULL,`img` VARCHAR(255) NOT NULL,`size` VARCHAR(45) NOT NULL ,PRIMARY KEY(`id`))";
         if(!$mysqli->query($sql)){
             return false;
         }

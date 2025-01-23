@@ -10,6 +10,7 @@ $size = $sizeErr = '';
 $price = $priceErr = '';
 $description = $descriptionErr = '';
 $itemImg = $itemImgErr = '';
+$ImgName="";
 $invalid = '';
 $error = false;
 
@@ -31,8 +32,8 @@ if (isset($_POST['plantName'])) {
   $size = $_POST['size'];
   $price = $_POST['price'];
   $description = $_POST['description'];
-  $file = $_FILES['itemImg'];
-  $itemImg = $file['name'];
+  $itemImg = $_FILES['itemImg'];
+  $ImgName = date('YMDHIS'). $itemImg['name'];
 
   if ($plantName === '') {
     $plantNameErr = 'Name must not be blank!';
@@ -74,34 +75,38 @@ if (isset($_POST['plantName'])) {
     }
   }
 
-  if ($itemImg == "") {
-    $itemImgErr = " Image can't be blank!";
+  if ($ImgName === "") {
+    $itemImgErr = "Please choose profile!";
     $invalid = "err";
-  } else {
-    $tmp = $file['tmp_name'];
-    $img = file_get_contents(filename: $tmp);
-    $data = base64_encode($img);
-
-  }
+}
 
 
   if (!$invalid) {
     if(isset($_GET['id'])){
-      if(update_plant($mysqli,$plantName,$price,$description,$size,$data,$id)){
+      if(update_plant($mysqli,$plantName,$price,$description,$size,$ImgName,$id)){
         header("Location:plant_list.php");
       }else{
         $error = true;
         
       }
     }else{
-      if(save_plant($mysqli, $plantName, $price, $description, $data, $size)){
-        header("Location:plant_list.php");
-      }else{
-        $error = true;
-      }
+$status = save_plant($mysqli, $plantName, $price, $description, $ImgName, $size);
+
+if ($status === true) {
+    $targetDir = "../admin/assets/profile/";
+    if (!is_dir($targetDir)) {
+        mkdir($targetDir, 0777, true);
+    }
+    $status = move_uploaded_file($itemImg['tmp_name'], $targetDir . $ImgName);
+    // header("Location:./user_list.php");
+    echo "<script>location.replace('./plant_list.php?lest')</script>";
+} else {
+    $invalid = $status;
+}
+
+    }
     }
   }
-}
 
 ?>
 
@@ -147,7 +152,7 @@ if (isset($_POST['plantName'])) {
               </div>
               <div class="form-group my-3">
                 <label class="form-label">Image</label>
-                <input type="file" name="itemImg" class="form-control">
+                <input type="file" name="itemImg" value="<?= $itemImg ?>" class="form-control">
                 <div class="validation-message" style="font-size:12px;color:red; line-height:25px; height:25px">
                   <?= $itemImgErr ?>
                 </div>

@@ -72,7 +72,7 @@ if (isset($_GET['lest'])) {
                           <td><?= $plant['size'] ?></td>
                           <td>
                             <img style="width: 70px;height: 70px;border-radius: 50%;"
-                              src="data:image/' . $type . ';base64,<?= $plant['img'] ?>">
+                              src="../admin/assets/profile/<?= $plant['img'] ?>">
                           </td>
                           <td>
                           <a class="btn btn-sm btn-primary" href="./add_plant.php?id=<?= $plant['id'] ?>"><i class="bi bi-pen"></i></a>

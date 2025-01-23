@@ -68,7 +68,7 @@ if (isset($_GET['lest'])) {
                             <td><?= $bouquet['description'] ?></td>
                             <td><?= $bouquet['price'] ?> mmk</td>
                             <td>
-                              <img style="width: 70px;height: 70px;border-radius: 50%;" src="data:image/' . $type . ';base64,<?= $bouquet['img'] ?>">
+                              <img style="width: 70px;height: 70px;border-radius: 50%;" src="../admin/assets/profile/<?= $bouquet['img'] ?>">
                             </td>
                             <th>
                             <a class="btn btn-sm btn-primary" href="./add_bouquet.php?id=<?= $bouquet['id'] ?>"><i class="bi bi-pen"></i></a>
